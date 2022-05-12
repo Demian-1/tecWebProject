@@ -8,7 +8,40 @@
 </head>
 <body>
     <form>
-        
+        <legend>Datos del o la derechohabiente</legend>
+        <input type="text" name="der_apellido_pat" id="der_apellido_pat" placeholder="Apellido paterno" >
+        <input type="text" name="der_apellido_mat" id="der_apellido_mat"
+        placeholder="Apellido materno" >
+        <input type="text" name="der_nombres" id="der_nombres" placeholder="Nombre(s)" >
+        <div id="der_domicilio">
+            <input type="number" name="der_cp" id="der_cp" / placeholder="Código postal">
+            <input type="text" name="der_entidad" id="der_entidad" placeholder="Entidad" disabled > <!-- Aqui se pondran automaticamente en base al CP -->
+            <input type="text" name="der_alcaldia" id="der_alcaldia" placeholder="Alcaldia" disabled>
+            <input type="text" name="der_colonia" id="der_colonia" placeholder="Colonia" disabled >
+            <input type="text" name="der_calle" id="der_calle" placeholder="Calle" />
+            <input type="number" name="der_numExt" id="der_numExt" placeholder="Número exterior">
+            <input type="number" name="der_numInt" id="der_numInt" placeholder="Número interior">
+            <input type="tel" name="der_tel_fijo" id="der_tel_fijo" placeholder="Número telefónico fijo">
+            <input type="tel" name="der_tel_celular" id="der_tel_celular" placeholder="Número celular">
+        </div>
+        <input type="email" name="der_email" id="der_email" placeholder="Correo electrónico">
+        <select name="der_opcupacion" id="der_ocupacion">
+            <option selected disabled>Ocupacion</option>
+            <option value="der_docente">Docente</option>
+            <option value="der_PAAE">PAEE</option>
+            <option value="der_funcionari">Funcionario(a)</option>
+        </select>
+        <input type="text" name="der_CURP" id="der_CURP" placeholder="CURP">
+        <input type="text" name="der_plaza" id="der_plaza" placeholder="Nombre de la plaza o puesto">
+        <input type="number" name="der_sueldo" id="der_sueldo" placeholder="Sueldo (MXN)">
+        <input type="text" name="der_numEmpleado" id="der_numEmpleado" placeholder="Número de empleado">
+        <div id="der_horario">
+            <label for="der_horario_inicio">Entrada: </label>
+            <input type="time" name="der_horario_inicio" id="der_horario_inicio">
+            <label for="der_horario_fin">Salida: </label>
+            <input type="time" name="der_horario_fin" id="der_horario_fin">
+        </div>
+        <input type="number" name="der_extension" id="der_extension" placeholder="Extension">
     </form>
 </body>
 </html>
