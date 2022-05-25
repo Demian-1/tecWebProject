@@ -7,13 +7,15 @@
     $pdf->Cell(50,12,'Hola Mundo',1,1,'L');
     $pdf->Output('I');//(I envia al navegador,D envia a nav y lo descarga,F guarda el fichero en local con nombre,S devuelve el doc como una cadena DESTINO),('NOMBRE.pdf'),
     */
+    include("phpMailer/class.phpmailer.php");
+    include("phpMailer/class.smtp.php");
     require('fpdf184/fpdf.php');
     $server ='localhost';
     $user='root';
     $pass='n0m3l0';
     $bd='dbtecweb';
     $conexion = new mysqli($server,$user,$pass,$bd);
-
+    
     //Select del morro
     $morro ="SELECT * FROM morro";
     $res=mysqli_query($conexion,$morro);
@@ -265,11 +267,11 @@
     $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRES) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
     $pdf->Ln(10);
     $pdf->Cell(25,30,'',0,0,'C');
-    $pdf->Cell(30,30,'Foto',1,0,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO"],35,62,30,0,''),1,0,'C');
     $pdf->Cell(30,30,'',0,0,'C');
-    $pdf->Cell(30,30,'Foto',1,0,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO"],95,62,30,0,''),1,0,'C');
     $pdf->Cell(30,30,'',0,0,'C');
-    $pdf->Cell(30,30,'Foto',1,1,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO"],155,62,30,0,''),1,1,'C');
     $pdf->Ln(5);
     $pdf->SetFont('Arial','B',12); 
     $pdf->Cell(25,5,'',0,0,'C');
@@ -310,6 +312,38 @@
     $pdf->Cell(66,12,'Nombre y Firma del derechohabiente',0,1,'C',0);
 
     $pdf->AliasNbPages();
-    
     $pdf->Output('I','Ficha_de_inscripcion.pdf');
+    //$doc = $pdf->Output('S','Ficha_de_inscripcion.pdf');
+
+        //ENvio a correo
+        $email_user = "tecwebproyectcendi@gmail.com"; //OJO. Debes actualizar esta línea con tu información
+        $email_password = "esdrasEsGay69"; //OJO. Debes actualizar esta línea con tu información
+        $the_subject = "Prueba de envio de PDF";
+        $address_to = "angeliyoxd@gmail.com"; //OJO. Debes actualizar esta línea con tu información
+        $from_name = "PDF - Registro CENDI";
+        $phpmailer = new PHPMailer();
+
+        // ---------- datos de la cuenta de Gmail -------------------------------
+        $phpmailer->Username = $email_user;
+        $phpmailer->Password = $email_password; 
+        //-----------------------------------------------------------------------
+        // $phpmailer->SMTPDebug = 1;
+        $phpmailer->SMTPSecure = 'tls';
+        $phpmailer->Host = "smtp.gmail.com"; // GMail
+        $phpmailer->Port = 587;
+        $phpmailer->IsSMTP(); // use SMTP
+        $phpmailer->SMTPAuth = true;
+
+        $phpmailer->setFrom($phpmailer->Username,$from_name);
+        $phpmailer->AddAddress($address_to); // recipients email
+
+        $phpmailer->Subject = $the_subject;	
+        $phpmailer->Body .="<h1 style='color:#3498db;'>Correo Con PDF proceso inscripcion-reinscripcion</h1>";
+        $phpmailer->Body .= "<p>Esta es una prueba del envío de correo :)</p>";
+        $phpmailer->Body .= "<p>Fecha: ".date("d-m-Y")."</p>";
+        $phpmailer->AddStringAttachment($doc,"Ficha_de_inscripcion.pdf");
+        $phpmailer->IsHTML(true);
+
+        //$phpmailer->Send();
+    
  ?>
