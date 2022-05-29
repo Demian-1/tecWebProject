@@ -4,13 +4,21 @@ const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
 
+const folio = document.getElementById("folio");
+
 let formStepsNum = 0;
+let messages = [];
 
 nextBtns.forEach(btn =>{
 	btn.addEventListener("click", () => {
-		formStepsNum++;
-		updateFormsSteps();
-		updateProgressBar();
+		if(folio.value.length > 0){
+			messages.push("El folio debe tener 10 digitos pudiendo empezar por PE o PP");
+		}
+		else{		
+			formStepsNum++;
+			updateFormsSteps();
+			updateProgressBar();
+		}
 	});
 });
 
