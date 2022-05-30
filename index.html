@@ -19,6 +19,7 @@
                 <div class="progress-step" data-title="Niña/Niño"></div>
                 <div class="progress-step" data-title="Derechohabiente"></div>
                 <div class="progress-step" data-title="Cónyuge"></div>
+                <div class="progress-step" data-title="Revision"></div>
             </div>
             <!-- Forms -->
         <div class="form-step form-step-active" id="form-datos-basicos">
@@ -112,29 +113,72 @@
                         <input type="text" name="der_colonia" id="der_colonia" placeholder="Colonia" disabled class="form-control">
                     </div>
                 </div>
-                <input type="text" name="der_calle" id="der_calle" placeholder="Calle" />
-                <input type="number" name="der_numExt" id="der_numExt" placeholder="Número exterior">
-                <input type="number" name="der_numInt" id="der_numInt" placeholder="Número interior">
-                <input type="tel" name="der_tel_fijo" id="der_tel_fijo" placeholder="Número telefónico fijo">
-                <input type="tel" name="der_tel_celular" id="der_tel_celular" placeholder="Número celular">
-                <input type="email" name="der_email" id="der_email" placeholder="Correo electrónico">
-                <select name="der_opcupacion" id="der_ocupacion">
-                    <option selected disabled>Ocupacion</option>
-                    <option value="der_docente">Docente</option>
-                    <option value="der_PAAE">PAEE</option>
-                    <option value="der_funcionari">Funcionario(a)</option>
-                </select>
-                <input type="text" name="der_CURP" id="der_CURP" placeholder="CURP">
-                <input type="text" name="der_plaza" id="der_plaza" placeholder="Nombre de la plaza o puesto">
-                <input type="number" name="der_sueldo" id="der_sueldo" placeholder="Sueldo (MXN)">
-                <input type="text" name="der_numEmpleado" id="der_numEmpleado" placeholder="Número de empleado">
-                <div id="der_horario">
-                    <label for="der_horario_inicio">Entrada: </label>
-                    <input type="time" name="der_horario_inicio" id="der_horario_inicio">
-                    <label for="der_horario_fin">Salida: </label>
-                    <input type="time" name="der_horario_fin" id="der_horario_fin">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" name="der_calle" id="der_calle" placeholder="Calle" class="form-control">
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <input type="number" name="der_numExt" id="der_numExt" placeholder="Núm Ext" class="form-control">
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <input type="number" name="der_numInt" id="der_numInt" placeholder="Núm. Int" class="form-control">
+                    </div>
                 </div>
-                <input type="number" name="der_extension" id="der_extension" placeholder="Extension">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="tel" name="der_tel_fijo" id="der_tel_fijo" placeholder="Tel. Fijo" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="tel" name="der_tel_celular" id="der_tel_celular"   
+                    placeholder="Tel. Celular" class="form-control">
+                    </div>
+                </div>
+                <div class="border-bottom">
+                    <input type="email" name="der_email" id="der_email" placeholder="Correo electrónico" class="form-control">
+                </div>
+                <input type="text" name="der_CURP" id="der_CURP" placeholder="CURP" class="form-control d-inline-block">
+                <div class="row ">
+                    <div class="col-sm-6">
+                        <select name="der_opcupacion" id="der_ocupacion" class="form-select">
+                        <option selected disabled>Ocupacion</option>
+                        <option value="der_docente">Docente</option>
+                        <option value="der_PAAE">PAEE</option>
+                        <option value="der_funcionari">Funcionario(a)</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="der_plaza" id="der_plaza" placeholder="Nombre de la plaza o puesto" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-text m-auto">$</span>
+                            <input type="number" name="der_sueldo" id="der_sueldo" placeholder="Sueldo (MXN)" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="der_numEmpleado" id="der_numEmpleado" placeholder="Número de empleado" class="form-control">
+                    </div>
+                </div>
+                <select name="der_adscripcion" id="der_adscripcion" class="form-select">
+                    <option disabled selected>Adscripcion</option>
+                </select>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <select name="der_horario" id="der_horario" class="form-select">
+                            <option selected disabled>Horario</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="number" name="der_extension" id="der_extension" placeholder="Extension" class="form-control">
+                    </div>
+                </div>
+                <div class="">
+                    <span class="input-group-text">¿Tiene cónyuge?</span>
+                    <input type="radio" name="der_conyuge" id="der_conyuge" class="form-check-input">Sí
+                    <input type="radio" name="der_conyuge" id="der_conyuge" class="form-check-input">No
+                </div>
                 <div class="btns-group">
                     <a href="#" class="btn btn-prev ms-0">Anterior</a>
                     <a href="#" class="btn btn-nxt me-0">Siguiente</a>

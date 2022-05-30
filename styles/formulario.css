@@ -70,7 +70,7 @@ body {
     color: lightslategray;
 }
 
-@media only screen and (max-width: 380px){
+@media only screen and (max-width: 500px){
     .progressbar{
         position: relative;
         display: flex;
