@@ -1,3 +1,26 @@
-.navbar-custom{
+nav{
     background-color: #980f5f;
+}
+header{
+    padding: 0 21px;
+    background-color: #980f5f;
+}
+
+.footer{
+    background-color: #980f5f;
+    padding: 21px;
+}
+
+.footer .footer-mid a{
+    color: aliceblue;
+    text-decoration: none;
+}
+.footer .footer-mid ul{
+    padding: 0;
+    list-style: none;
+}
+
+.social-logos{
+    height: 33px;
+    padding-right: 12px;
 }
