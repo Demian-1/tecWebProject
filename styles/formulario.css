@@ -8,6 +8,11 @@ body {
     display: grid;
     place-items: center;
     min-height: 100vh;
+    background: hsla(326, 83%, 35%, 1);
+    background: linear-gradient(45deg, hsla(326, 83%, 35%, 1) 0%, hsla(325, 82%, 33%, 1) 42%, hsla(324, 75%, 24%, 1) 93%);
+    background: -moz-linear-gradient(45deg, hsla(326, 83%, 35%, 1) 0%, hsla(325, 82%, 33%, 1) 42%, hsla(324, 75%, 24%, 1) 93%);
+    background: -webkit-linear-gradient(45deg, hsla(326, 83%, 35%, 1) 0%, hsla(325, 82%, 33%, 1) 42%, hsla(324, 75%, 24%, 1) 93%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#A30F63", endColorstr="#980F5F", GradientType=1 );
 }
 
 .width-50{
@@ -38,11 +43,11 @@ body {
     height: 4px;
     width: 100%;
     background-color: lightgray;
-    z-index: -1;
+    z-index: 0;
 }
 
 .progress{
-    background-color: rgb(44, 44, 255);;
+    background-color: #8D0E56;
     width: 0%;
     transition: 0.3s;
 }
@@ -55,6 +60,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index:1;
 }
 
 .progress-step::before{
@@ -85,12 +91,13 @@ body {
 }
 
 .progress-step-active{
-    background-color: rgb(44, 44, 255);
+    background-color: #8D0E56;
     color:azure;
     font-weight: bold;
 }
 
 .form{
+    background-color: white;
     width: min(32rem,90%);
     margin: 0 auto;
     border: 1px solid #ccc;
@@ -142,7 +149,7 @@ select{
     padding: 0.5rem;
     display: block;
     text-decoration: none;
-    background-color: rgb(44, 44, 255);
+    background-color: #8D0E56;
     color: azure;
     text-align: center;
     cursor: pointer;
@@ -156,5 +163,5 @@ select{
 }
 
 .btn:hover{
-    box-shadow: 0 0 0 2px white, 0 0 0 3px blue;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #8D0E56;
 }
