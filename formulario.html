@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles/formulario.css">
+    <script src="js/js.js" defer></script>
+</head>
+<body>
+    <form action="respuesta.html" class="form shadow-lg">
+        <h1 class="text-center">Registro 2022-2023</h1>
+            <!-- Barra de progreso -->
+            <div class="progressbar">
+                <div class="progress" id="progress"></div>  
+                <div class="progress-step progress-step-active" data-title="Básico"></div>
+                <div class="progress-step" data-title="Niña/Niño"></div>
+                <div class="progress-step" data-title="Derechohabiente"></div>
+                <div class="progress-step" data-title="Cónyuge"></div>
+                <div class="progress-step" data-title="Revision"></div>
+            </div>
+            <!-- Forms -->
+        <div class="form-step form-step-active" id="form-datos-basicos">
+            <h2 class="text-center">Datos basicos</h2>
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-text m-auto">Ciclo escolar</span>
+                    <input type="text" name="ciclo_escolar" id="ciclo_escolar" value="2022-2023" disabled="true" class="form-control">
+                </div>
+                <select name="CENDI" id="CENDI" class="form-select">
+                    <option selected disabled>CENDI</option>
+                    <option value="Cardenas">CENDI Amalia Solórzano de Cárdenas</option>
+                    <option value="Bassols">CENDI Clementina Batalla de Bassols</option>
+                    <option value="LopezMateos">CENDI Eva Sámano de López Mateos</option>
+                    <option value="Batiz">CENDI Laura Pérez de Bátiz</option>
+                    <option value="Erro">CENDI Margarita Salazar de Erro</option>
+                </select>
+                <label for="foto">Foto</label>
+                <input type="file" id="foto" name="foto" class="form-control-file" accept="image/jpeg">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" name="folio" id="folio" class="form-control" maxlength="10" placeholder="Folio">
+                    </div>
+                    <div class="col-sm-6">
+                        <select name="grupo" id="grupo" class="form-select">
+                            <option selected disabled>Grupo</option>
+                            <option value="lacI">Lac I - II</option>
+                            <option value="lacII">Lac III - Mat I</option>
+                            <option value="matIIA">Mat IIA</option>
+                            <option value="matIIB">Mat IIB</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" class="btn btn-nxt w-50 float-end me-0" id="test2">Siguiente</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-step" id="test">
+            <h2 class="text-center">Datos del niño o de la niña</h2>
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" name="kid_apellido_pat" id="kid_apellido_pat" placeholder="Apellido paterno" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="kid_apellido_mat" id="kid_apellido_mat" placeholder="Apellido materno" class="form-control">
+                    </div>
+                </div>
+                <input type="text" name="kid_nombres" id="kid_nombres" placeholder="Nombre(s)" class="form-control">
+                <div class="row">
+                    <div class="input-group">
+                        <span class="input-group-text m-auto mw-50">Fecha de nacimiento</span>
+                        <input type="date" name="kid_birthday" id="kid_birthday" onblur="calcularEdad()" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <input type="number" name="kid_age" id="kid_age" disabled="true" placeholder="Edad" class="form-control">
+                        <span class="input-group-text m-auto mw-25">Años</span>
+                        <input type="number" name="kid_age_months" id="kid_age_months" disabled placeholder="Meses" class="form-control">
+                        <span class="input-group-text m-auto mw-25">Meses</span>
+                    </div>
+                </div>
+                <input type="text" name="kid_CURP" id="kid_CURP" placeholder="CURP" class="form-control">
+                <div class="btns-group">
+                    <a href="#" class="btn btn-prev ms-0">Anterior</a>
+                    <a href="#" class="btn btn-nxt me-0">Siguiente</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-step">
+            <h2 class="text-center">Datos del o la derechohabiente</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" name="der_apellido_pat" id="der_apellido_pat" placeholder="Apellido paterno" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="der_apellido_mat" id="der_apellido_mat" placeholder="Apellido materno" class="form-control">
+                    </div>
+                </div>
+                <input type="text" name="der_nombres" id="der_nombres" placeholder="Nombre(s)" class="form-control">
+                <div class="input-group border-top">
+                    <input type="number" name="der_cp" id="der_cp" placeholder="Código postal" class="mw-35 form-control">
+                    <input type="text" name="der_entidad" id="der_entidad" placeholder="Entidad" disabled class="form-control"> <!-- Aqui se pondran automaticamente en base al CP -->
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <input type="text" name="der_alcaldia" id="der_alcaldia" placeholder="Alcaldia" disabled class="form-control">
+                        <input type="text" name="der_colonia" id="der_colonia" placeholder="Colonia" disabled class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="text" name="der_calle" id="der_calle" placeholder="Calle" class="form-control">
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <input type="number" name="der_numExt" id="der_numExt" placeholder="Núm Ext" class="form-control">
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <input type="number" name="der_numInt" id="der_numInt" placeholder="Núm. Int" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="tel" name="der_tel_fijo" id="der_tel_fijo" placeholder="Tel. Fijo" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="tel" name="der_tel_celular" id="der_tel_celular"   
+                    placeholder="Tel. Celular" class="form-control">
+                    </div>
+                </div>
+                <div class="border-bottom">
+                    <input type="email" name="der_email" id="der_email" placeholder="Correo electrónico" class="form-control">
+                </div>
+                <input type="text" name="der_CURP" id="der_CURP" placeholder="CURP" class="form-control d-inline-block">
+                <div class="row ">
+                    <div class="col-sm-6">
+                        <select name="der_opcupacion" id="der_ocupacion" class="form-select">
+                        <option selected disabled>Ocupacion</option>
+                        <option value="der_docente">Docente</option>
+                        <option value="der_PAAE">PAEE</option>
+                        <option value="der_funcionari">Funcionario(a)</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="der_plaza" id="der_plaza" placeholder="Nombre de la plaza o puesto" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-text m-auto">$</span>
+                            <input type="number" name="der_sueldo" id="der_sueldo" placeholder="Sueldo (MXN)" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="der_numEmpleado" id="der_numEmpleado" placeholder="Número de empleado" class="form-control">
+                    </div>
+                </div>
+                <select name="der_adscripcion" id="der_adscripcion" class="form-select">
+                    <option disabled selected>Adscripción</option>
+                </select>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <select name="der_horario" id="der_horario" class="form-select">
+                            <option selected disabled>Horario</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="number" name="der_extension" id="der_extension" placeholder="Extensión" class="form-control">
+                    </div>
+                </div>
+                <div class="">
+                    <span class="input-group-text">¿Tiene cónyuge?</span>
+                    <input type="radio" name="der_conyuge" id="der_conyuge" class="form-check-input">Sí
+                    <input type="radio" name="der_conyuge" id="der_conyuge" class="form-check-input">No
+                </div>
+                <div class="btns-group">
+                    <a href="#" class="btn btn-prev ms-0">Anterior</a>
+                    <a href="#" class="btn btn-nxt me-0">Siguiente</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-step">
+            <h2 class="text-center">Datos del cónyuge</h2>  
+            <input type="text" name="cony_apellido_pat" id="cony_apellido_pat" placeholder="Apellido paterno">
+            <input type="text" name="cony_apellido_mat" id="cony_apellido_mat" placeholder="Apellido materno">
+            <input type="text" name="cony_nombres" id="cony_nombres" placeholder="Nombre(s)">
+            <div id="cony_domicilio">
+                <p>Domicilio:</p>
+                <input type="number" name="cony_cp" id="cony_cp" placeholder="Código postal">
+                <input type="text" name="cony_entidad" id="cony_entidad" placeholder="Entidad" disabled="true">
+                <input type="text" name="cony_alcaldia" id="cony_alcaldia" placeholder="Alcaldia/Municipio" disabled="true">
+                <input type="text" name="cony_colonia" id="cony_colonia" placeholder="Colonia" disabled="true">
+                <input type="text" name="cony_calle" id="cony_calle" placeholder="Calle" disabled="true" />
+                <input type="number" name="cony_numExt" id="cony_numExt" placeholder="Número exterior">
+                <input type="number" name="cony_numInt" id="cony_numInt" placeholder="Número interior">
+                <input type="tel" name="cony_tel_fijo" id="cony_tel_fijo" placeholder="55-1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}">
+                <input type="tel" name="cony_tel_celular" id="cony_tel_celular" placeholder="55-1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}">
+            </div>
+            <input type="text" name="cony_lugar_trabajo" id="cony_lugar_trabajo" placeholder="Lugar de Trabajo">
+            <input type="text" name="cony_domicilio_trabajo" id="cony_domicilio_trabajo" placeholder="Domicilio de trabajo">
+            <input type="tel" name="cony_tel_trabajo" id="cony_tel_trabajo" placeholder="55-1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}">
+            <input type="tel" name="cony_tel_trabajo_ext" id="cony_tel_trabajo_ext" placeholder="1234" pattern="[0-9]{4}">
+            <div class="btns-group">
+                <a href="#" class="btn btn-prev">Anterior</a>
+                <input type="submit" value="Finalizar" class="btn">
+            </div>
+        </div>
+     </form>
+</body>
+</html>
