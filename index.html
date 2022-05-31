@@ -7,6 +7,7 @@
     <title>CENDI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="icon" href="./assets/images/cendi_logo.png">
 </head>
 <body>
     <!-- Header -->
@@ -32,7 +33,7 @@
                         <a class="nav-link" href="#">Recuperar ficha</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="./Secciones.html">Secciones</a>
+                        <a class="nav-link" href="./Secciones.html">Áreas</a>
                         </li>
                     </ul>
                 </div>
@@ -43,7 +44,50 @@
 
     <!-- MAIN -->
     <main>
-        <div class="container main-principal"><h1>Lo principal de la página</h1></div>
+        <div class="container main-principal">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="overlay"></div>
+                    <img src="./assets/images/Cendi1.jpg" class="d-block w-100" alt="Cendi1">
+                    <div class="carousel-caption">
+                        <a href="./formulario.html"><h2>Inscripciones al Ciclo 2022-2023</h2></a>
+                      <p class="d-none d-md-block">El nuevo ciclo escolar ha comenzado, regresaremos con todas las medidas sanitarias. Completa tu registro al Ciclo 2022-2023 en cualquiera de nuestros CENDI's</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="overlay"></div>
+                    <img src="./assets/images/Cendi2.jpg" class="d-block w-100" alt="Cendi2">
+                    <div class="carousel-caption">
+                        <a href="./Secciones.html"><h2>Consulta las areas con las que contamos</h2></a>
+                      <p class="d-none d-md-block">Los CENDI's cuentan con diferentes áreas para poder brindarles la mejor atención. Conoce cuales son los servicios que tenemos disponibles</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="overlay"></div>
+                    <img src="./assets/images/Cendi3.jpg" class="d-block w-100" alt="Cendi3">
+                    <div class="carousel-caption">
+                        <a href="#"><h2>Recupera tu ficha de inscripción</h2></a>
+                      <p class="d-none d-md-block">Tu ficha de incripción es importante para completar tu proceso de incripción, recuerda llevarla el dia que te corresponde. Si ya hiciste tu registro en linea puedes consultar tu ficha aquí.</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+                
+              </div>
+        </div>
         <div class="container main-info">Info basica del cendi</div>
         <div class="container main-secciones">Secciones solo informativas</div>
         <div class="container main-cendis">Tal vez los cendis del poli, o de la ciudad</div>
