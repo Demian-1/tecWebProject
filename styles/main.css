@@ -1,13 +1,18 @@
+/* Estilos del HEADER */
 nav{
-    background-color: #980f5f;
+    background-color: #8D0E56;
 }
 header{
     padding: 0 21px;
-    background-color: #980f5f;
+    background-color: #8D0E56;
 }
 
+/* Estilos del FOOTER */
 .footer{
-    background-color: #980f5f;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #8D0E56;
     padding: 21px;
 }
 
@@ -23,4 +28,9 @@ header{
 .social-logos{
     height: 33px;
     padding-right: 12px;
+}
+
+/* Estilos del MAIN */
+main{
+    padding: 15px;
 }

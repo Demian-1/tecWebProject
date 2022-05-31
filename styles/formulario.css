@@ -6,7 +6,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     display: grid;
-    place-items: center;
+    align-items: start;
+    /* justify-items: center; */
     min-height: 100vh;
     background: hsla(326, 83%, 35%, 1);
     background: linear-gradient(45deg, hsla(326, 83%, 35%, 1) 0%, hsla(325, 82%, 33%, 1) 42%, hsla(324, 75%, 24%, 1) 93%);
@@ -149,8 +150,8 @@ select{
     padding: 0.5rem;
     display: block;
     text-decoration: none;
-    background-color: #8D0E56;
-    color: azure;
+    background-color: #8D0E56 !important;
+    color: azure !important;
     text-align: center;
     cursor: pointer;
     border-radius: 0.45rem;
