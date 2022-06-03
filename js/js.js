@@ -8,12 +8,11 @@ const hasPartner = document.getElementById("der_cony_no");
 const folio = document.getElementById("folio");
 
 let formStepsNum = 0;
-let messages = [];
 
 nextBtns.forEach(btn =>{
 	btn.addEventListener("click", () => {
-		if(folio.value.length > 0){
-			messages.push("El folio debe tener 10 digitos pudiendo empezar por PE o PP");
+		if(checkVal()){
+			console.log("hay algun error");
 		}
 		else{
 			if(formStepsNum == 2 && hasPartner.checked == true){
@@ -38,6 +37,21 @@ prevBtns.forEach(btn =>{
 		updateProgressBar();
 	});
 });
+
+function checkVal(){
+	let errors = 0;
+	let campos = document.querySelectorAll(".form-step-active .needs-validation");
+	for( i = 0; i < campos.length ; i++){
+		if(!campos[i].checkValidity()){
+			campos[i].classList.add("is-invalid");
+			errors++;
+		}
+		else{
+			campos[i].classList.contains("is-invalid") && campos[i].classList.remove("is-invalid");
+		}
+	}
+	return errors;
+}
 
 function updateFormsSteps(){
 	formSteps.forEach(formStep =>{
