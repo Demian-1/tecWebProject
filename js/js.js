@@ -3,6 +3,7 @@ const nextBtns = document.querySelectorAll(".btn-nxt");
 const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
+const hasPartner = document.getElementById("der_cony_no");
 
 const folio = document.getElementById("folio");
 
@@ -14,8 +15,12 @@ nextBtns.forEach(btn =>{
 		if(folio.value.length > 0){
 			messages.push("El folio debe tener 10 digitos pudiendo empezar por PE o PP");
 		}
-		else{		
-			formStepsNum++;
+		else{
+			if(formStepsNum == 2 && hasPartner.checked == true){
+				formStepsNum+=2;
+			}else{
+				formStepsNum++;
+			}
 			updateFormsSteps();
 			updateProgressBar();
 		}
@@ -24,7 +29,11 @@ nextBtns.forEach(btn =>{
 
 prevBtns.forEach(btn =>{
 	btn.addEventListener("click", () => {
-		formStepsNum--;
+		if(formStepsNum == 4 && hasPartner.checked == true){
+			formStepsNum-=2;
+		}else{
+			formStepsNum--;
+		}
 		updateFormsSteps();
 		updateProgressBar();
 	});
