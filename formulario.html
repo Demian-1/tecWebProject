@@ -68,8 +68,6 @@
                     <option value="Erro">CENDI Margarita Salazar de Erro</option>
                 </select>
                 <div class="invalid-feedback">Seleccione una opción</div>
-                <label for="foto">Foto</label>
-                <input type="file" id="foto" name="foto" class="form-control-file" accept="image/jpeg">
                 <div class="row">
                     <div class="col-sm-6">
                         <input type="text" name="folio" id="folio" class="form-control needs-validation" maxlength="10" placeholder="Folio" required>
@@ -93,9 +91,20 @@
             </div>
         </div>
         
-        <div class="form-step" id="test">
+        <div class="form-step">
             <h2 class="text-center">Datos del niño o de la niña</h2>
-            <div class="container"> 
+            <div class="container">
+                <div class="text-center">
+                    <input type="file" name="inpFile" id="inpFile" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
+                    <div class="image-preview m-auto" id="imagePreview">
+                        <img src="" alt="Foto" class="image-preview__image">
+                        <span class="image-preview__default-text">Foto</span>
+                    </div>
+                    <div class="btns-group d-block remove-on-check">
+                        <label for="inpFile" class="btn mx-0">Selecciona una foto</label>
+                    </div>
+                    <div class="invalid-feedback">Seleccione una foto</div>
+                </div> 
                 <div class="row">
                     <div class="col-sm-6">
                         <input type="text" name="kid_apellido_pat" id="kid_apellido_pat" placeholder="Apellido paterno" class="form-control needs-validation" required>
@@ -138,6 +147,17 @@
         <div class="form-step">
             <h2 class="text-center">Datos del o la derechohabiente</h2>
             <div class="container">
+                <div class="text-center">
+                    <input type="file" name="inpFile2" id="inpFile2" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
+                    <div class="image-preview m-auto" id="imagePreview2">
+                        <img src="" alt="Foto" class="image-preview__image">
+                        <span class="image-preview__default-text">Foto</span>
+                    </div>
+                    <div class="btns-group d-block remove-on-check">
+                        <label for="inpFile2" class="btn mx-0">Selecciona una foto</label>
+                    </div>
+                    <div class="invalid-feedback">Seleccione una foto</div>
+                </div> 
                 <div class="row">
                     <div class="col-sm-6">
                         <input type="text" name="der_apellido_pat" id="der_apellido_pat" placeholder="Apellido paterno" class="form-control needs-validation" required>
@@ -266,6 +286,17 @@
         <div id="conyuge" class="form-step">
             <h2 class="text-center">Datos del cónyuge</h2>
             <div class="container">
+                <div class="text-center">
+                    <input type="file" name="inpFile3" id="inpFile3" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
+                    <div class="image-preview m-auto" id="imagePreview3">
+                        <img src="" alt="Foto" class="image-preview__image">
+                        <span class="image-preview__default-text">Foto</span>
+                    </div>
+                    <div class="btns-group d-block remove-on-check">
+                        <label for="inpFile3" class="btn mx-0">Selecciona una foto</label>
+                    </div>
+                    <div class="invalid-feedback">Seleccione una foto</div>
+                </div> 
                 <div class="row">
                     <div class="col-sm-6">
                         <input type="text" name="cony_apellido_pat" id="cony_apellido_pat" placeholder="Apellido paterno" class="form-control needs-validation" required>

@@ -9,10 +9,7 @@ let formStepsNum = 0;
 
 nextBtns.forEach(btn =>{
 	btn.addEventListener("click", () => {
-		if(checkVal()){
-			console.log("hay algun error");
-		}
-		else{
+		if(!checkVal()){
 			if(formStepsNum == 2 && hasPartner.checked == true){
 				formStepsNum+=2;
 			}else{
@@ -150,9 +147,38 @@ document.getElementsByTagName("form")[0].onkeypress = function(e) {
     }
   }
 
+/* Funciones de cálculo automático */
+
 function calcularEdad() {
   	const date = new Date(document.getElementById('kid_birthday').value).getTime();
   	const now = new Date().getTime();
   	var age = Math.floor((now - date ) / (1000 * 60 * 60 * 24 * 365));
     (document.getElementById('kid_age')).value = age;  
 }
+
+/* Image related JS */
+
+const inpFile = document.querySelectorAll(".inpFile");
+const previewContainer = document.querySelectorAll(".image-preview");
+
+inpFile.forEach(inpFile=>{
+	inpFile.addEventListener("change", function(){
+	   const file = this.files[0];
+	   const clsImg = this.nextElementSibling.firstElementChild;
+	   const clsTxt = this.nextElementSibling.firstElementChild.nextElementSibling;
+		if(file){
+			const reader = new FileReader();
+			clsTxt.style.display="none";
+			clsImg.style.display = "block";
+
+			reader.addEventListener("load",function(){
+				clsImg.setAttribute("src",this.result);
+			});
+			reader.readAsDataURL(file);
+	}else{
+			clsTxt.style.display=null;
+			clsImg.style.display = null;
+			clsImg.setAttribute("src","")
+		}
+	});
+});
