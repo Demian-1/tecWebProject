@@ -151,6 +151,10 @@ input[type="file"]{
     display: none;
 }
 
+input[id$="CURP"]{
+    text-transform: uppercase;
+}
+
 label{
     vertical-align: middle;
 }
