@@ -14,9 +14,23 @@
     $user='root';
     $pass='n0m3l0';
     $bd='dbtecweb';
-    $conexion = new mysqli($server,$user,$pass,$bd);
     
-    //Select del morro
+    $conexion = new mysqli($server,$user,$pass,$bd);
+    $bnum='2022010001';
+    $morro ="SELECT * FROM MORRO 
+	INNER JOIN CENDI on CENDI_idCENDI=idCENDI 
+    INNER JOIN CITAS on CITAS_idCITAS=idCITAS 
+    INNER JOIN ENTREVISTA on ENTREVISTA_idENTREVISTA=idENTREVISTA
+    INNER JOIN GRUPO on GRUPO_idGRUPO=idGRUPO
+    INNER JOIN (DERECHOHABIENTE 
+					INNER JOIN OCUPACION on OCUPACION_ID=ID
+                    INNER JOIN ADSCRIPCION on idADS=ADSCRIPCION_idADS
+                    INNER JOIN HORARIO on idHORARIO=HORARIO_idHORARIO) on DERECHOHABIENTE.MORRO_Boleta_D=FOLIO
+    INNER JOIN CONYUGE as CONYUGUE on CONYUGUE.MORRO_Boleta_C=FOLIO WHERE FOLIO='$bnum'";
+    $res=mysqli_query($conexion,$morro);
+    $datos=mysqli_fetch_assoc($res);
+    
+    /* //Select del morro
     $morro ="SELECT * FROM morro";
     $res=mysqli_query($conexion,$morro);
     $datos=mysqli_fetch_assoc($res);
@@ -78,13 +92,13 @@
     $ent="SELECT * FROM entrevista INNER JOIN morro ON  ENTREVISTA_idENTREVISTA=idENTREVISTA  WHERE ENTREVISTA_idENTREVISTA = '$iden' ";
     $resent=mysqli_query($conexion,$ent);
     $datoent=mysqli_fetch_assoc($resent);
-
+    
     //Select del horario de CITA
    /* $idcit=$datos['CITAS_idCITAS'];
     $cit="SELECT * FROM citas INNER JOIN morro ON  CITAS_idCITAS=idCITAS  WHERE CITAS_idCITAS = '$idcit' ";
     $rescit=mysqli_query($conexion,$cit);
     $datocit=mysqli_fetch_assoc($rescit);*/
-
+    
    //Encabezado
     class PDF extends FPDF{
         function Header(){
@@ -112,14 +126,14 @@
     $pdf->Cell(198,12,utf8_decode('FICHA DE INSCRIPCIÓN'),0,1,'C');
     $pdf->SetFont('Arial','B',12);
     $pdf->Cell(165,30,utf8_decode('CICLO ESCOLAR: 2022-2023'),0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO"],175,37,30,0,''),1,1,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_M"],175,37,30,0,''),1,1,'C');
     $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(150,12,utf8_decode('CENDI:')." ".$datoscen["NOMBRE"],0,0,'C');  
+    $pdf->Cell(150,12,utf8_decode('CENDI:')." ".$datos["NOMBRE_CE"],0,0,'C');  
     $pdf->Cell(15,10,'Folio:',1,0,'C');
     $pdf->Cell(30,10,utf8_decode($datos["FOLIO"]),1,1,'C'); 
     $pdf->Cell(150,10,'',0,0,'C');
     $pdf->Cell(15,10,utf8_decode('Grupo:'),1,0,'C');
-    $pdf->Cell(30,10,utf8_decode($datosg["NOMBRE"]),1,1,'C');  
+    $pdf->Cell(30,10,utf8_decode($datos["NOMBRE_G"]),1,1,'C');  
     // Fin primera seccion
 
     //Inicio seccion datos del niño o niña
@@ -128,7 +142,7 @@
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(66,5,$datos["APE_PAT"],1,0,'C',1); 
     $pdf->Cell(66,5,$datos["APE_MAT"],1,0,'C',1); 
-    $pdf->Cell(66,5,$datos["NOM"],1,1,'C',1);  
+    $pdf->Cell(66,5,$datos["NOM_M"],1,1,'C',1);  
     $pdf->SetFont('Arial','',10); 
     $pdf->Cell(66,5,'Primer Apellido',1,0,'C',0); 
     $pdf->Cell(66,5,'Segundo Apellido',1,0,'C',0); 
@@ -147,20 +161,20 @@
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(66,7,utf8_decode('DATOS DEL O LA DERECHOHABIENTE:'),0,1,'L'); 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(66,5,utf8_decode($datosd["APE_PAT"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["APE_MAT"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["NOM"]),1,1,'C',1);  
+    $pdf->Cell(66,5,utf8_decode($datos["APE_PAT_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["APE_MAT_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["NOM_D"]),1,1,'C',1);  
     $pdf->SetFont('Arial','',10); 
     $pdf->Cell(66,5,'Primer Apellido',1,0,'C',0); 
     $pdf->Cell(66,5,'Segundo Apellido',1,0,'C',0); 
     $pdf->Cell(66,5,'Nombre(s)',1,1,'C',0);
 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(33,5,utf8_decode($datosdir["cp"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosdir["estado"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosdir["municipio"]),1,0,'C',1);
-    $pdf->Cell(33,5,utf8_decode($datosdir["asentamiento"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["CALLE"]),1,1,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["CP_D"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["ESTADO_D"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["MUNICIPIO_D"]),1,0,'C',1);
+    $pdf->Cell(33,5,utf8_decode($datos["COLONIA_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["CALLE_D"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10); 
     $pdf->Cell(33,5,'C.P.',1,0,'C',0); 
     $pdf->Cell(33,5,'Entidad',1,0,'C',0); 
@@ -169,10 +183,10 @@
     $pdf->Cell(66,5,'Calle',1,1,'C',0);
 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(33,5,utf8_decode($datosd["NUM_EXT"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosd["NUM_INT"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["TELF"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["TELC"]),1,1,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["NUM_EXT_D"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["NUM_INT_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["TELF_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["TELC_C"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(33,5,utf8_decode('N°Ext.'),1,0,'C',0); 
     $pdf->Cell(33,5,utf8_decode('N°int.'),1,0,'C',0);
@@ -180,52 +194,52 @@
     $pdf->Cell(66,5,utf8_decode('Teléfono Celular'),1,1,'C',0);
 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(66,5,utf8_decode($datosd["MAIL"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosoc["NOM"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["CURP"]),1,1,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["MAIL_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["NOM_O"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["CURP_D"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(66,5,utf8_decode('Correo Electrónico'),1,0,'C',0); 
     $pdf->Cell(66,5,utf8_decode('Ocupación'),1,0,'C',0);
     $pdf->Cell(66,5,'CURP',1,1,'C',0); 
 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(66,5,utf8_decode($datosd["PLAZA"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["SUELDO"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosd["NUMEROE"]),1,1,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["PLAZA_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["SUELDO_D"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["NUMEROE_D"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(66,5,utf8_decode('Puesto'),1,0,'C',0); 
     $pdf->Cell(66,5,utf8_decode('Sueldo Mensual'),1,0,'C',0);
     $pdf->Cell(66,5,utf8_decode('Número de empleado'),1,1,'C',0); 
     
     $pdf->SetFont('Arial','B',10);  
-    $pdf->Cell(198,5,utf8_decode($datosad["NOMBRE_ESC"]),1,1,'C',1);
+    $pdf->Cell(198,5,utf8_decode($datos["NOMBRE_ESC"]),1,1,'C',1);
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(198,5,utf8_decode('Adscripción'),1,1,'C',0); 
     $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(132,5,utf8_decode($datosh["HORA_E"]."AM - ".$datosh["HORA_S"]."PM"),1,0,'C',1);
-    $pdf->Cell(66,5,utf8_decode($datosd["EXT"]),1,1,'C',1); 
+    $pdf->Cell(132,5,utf8_decode($datos["HORA_E"]."AM - ".$datos["HORA_S"]."PM"),1,0,'C',1);
+    $pdf->Cell(66,5,utf8_decode($datos["EXT_D"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(132,5,utf8_decode('Horario de trabajo'),1,0,'C',0); 
     $pdf->Cell(66,5,utf8_decode('Extensión'),1,1,'C',0);
     //FIn derechohabiente
-
+    // INICIO CONYUGE
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(66,7,utf8_decode('DATOS DEL CÓNYUGE(PADRE,MADRE):'),0,1,'L'); 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(66,5,utf8_decode($datosc["APE_PAT"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosc["APE_MAT"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosc["NOM"]),1,1,'C',1);  
+    $pdf->Cell(66,5,utf8_decode($datos["APE_PAT_C"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["APE_MAT_C"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["NOM_C"]),1,1,'C',1);  
     $pdf->SetFont('Arial','',10); 
     $pdf->Cell(66,5,'Primer Apellido',1,0,'C',0); 
     $pdf->Cell(66,5,'Segundo Apellido',1,0,'C',0); 
     $pdf->Cell(66,5,'Nombre(s)',1,1,'C',0);
      
     $pdf->SetFont('Arial','B',10);
-    $pdf->Cell(33,5,utf8_decode($datosdirc["cp"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosdirc["estado"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosdirc["municipio"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosdirc["asentamiento"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosc["CALLE"]),1,1,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["CP_C"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["ESTADO_C"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["MUNICIPIO_C"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["COLONIA_C"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["CALLE_C"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10); 
     $pdf->Cell(33,5,'C.P.',1,0,'C',0); 
     $pdf->Cell(33,5,'Entidad',1,0,'C',0); 
@@ -234,10 +248,10 @@
     $pdf->Cell(66,5,'Calle',1,1,'C',0);
 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(33,5,utf8_decode($datosc["NUM_EXT"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosc["NUM_INT"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosc["TELT"]),1,0,'C',1); 
-    $pdf->Cell(66,5,utf8_decode($datosc["TELC"]),1,1,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["NUM_EXT_C"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["NUM_INT_C"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["TELC_C"]),1,0,'C',1); 
+    $pdf->Cell(66,5,utf8_decode($datos["TELC_C"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(33,5,utf8_decode('N°Ext.'),1,0,'C',0); 
     $pdf->Cell(33,5,utf8_decode('N°int.'),1,0,'C',0);
@@ -245,17 +259,17 @@
     $pdf->Cell(66,5,utf8_decode('Teléfono Celular'),1,1,'C',0);
 
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(198,5,utf8_decode($datosc["LUGART"]),1,1,'C',1);
+    $pdf->Cell(198,5,utf8_decode($datos["LUGART_C"]),1,1,'C',1);
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(198,5,'Lugar de Trabajo:',1,1,'C',0);
     $pdf->SetFont('Arial','B',10);  
-    $pdf->Cell(198,5,utf8_decode($datosc["DOMT"]),1,1,'C',1); 
+    $pdf->Cell(198,5,utf8_decode($datos["DOMT_C"]),1,1,'C',1); 
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(198,5,'Domicilio de Trabajo:',1,1,'C',0);
     $pdf->SetFont('Arial','B',10); 
-    $pdf->Cell(99,5,utf8_decode($datosc["TELT"]),1,0,'C',1); 
-    $pdf->Cell(33,5,utf8_decode($datosc["EXT"]),1,0,'C',1);
-    $pdf->Cell(66,5,utf8_decode($datosc["RELIGION"]),1,1,'C',1);  
+    $pdf->Cell(99,5,utf8_decode($datos["TELT_C"]),1,0,'C',1); 
+    $pdf->Cell(33,5,utf8_decode($datos["EXT_C"]),1,0,'C',1);
+    $pdf->Cell(66,5,utf8_decode($datos["RELIGION_C"]),1,1,'C',1);  
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(99,5,utf8_decode('Teléfono de Trabajo'),1,0,'C',0); 
     $pdf->Cell(33,5,utf8_decode('Extensión'),1,0,'C',0);
@@ -267,11 +281,11 @@
     $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRES) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
     $pdf->Ln(10);
     $pdf->Cell(25,30,'',0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO"],35,62,30,0,''),1,0,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
     $pdf->Cell(30,30,'',0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO"],95,62,30,0,''),1,0,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_C"],95,62,30,0,''),1,0,'C');
     $pdf->Cell(30,30,'',0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO"],155,62,30,0,''),1,1,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],155,62,30,0,''),1,1,'C');
     $pdf->Ln(5);
     $pdf->SetFont('Arial','B',12); 
     $pdf->Cell(25,5,'',0,0,'C');
@@ -294,7 +308,7 @@
     $pdf->Cell(25,12,date("Y"),0,1,'C',1);
     $pdf->Cell(198,12,utf8_decode('A las:'),0,1,'L');
     $pdf->Cell(66,12,'',0,0,'C',0);
-    $pdf->Cell(66,12,utf8_decode("Inicio: ".$datoent["INICIO"]." Fin ".$datoent["FIN"]),0,0,'C',1);
+    $pdf->Cell(66,12,utf8_decode("Inicio: ".$datos["INICIO"]." Fin ".$datos["FIN"]),0,0,'C',1);
     $pdf->Cell(66,12,'Hrs.',0,1,'L',0);
     $pdf->Ln(10);
     $pdf->SetFont('Arial','B',12);
@@ -307,19 +321,22 @@
     $pdf->Cell(25,12,date("Y"),0,1,'C',1);
     $pdf->Ln(10);
     $pdf->Cell(66,12,'',0,0,'C',0);
-    $pdf->Cell(66,12,'','B',1,'C',1);
+    $pdf->Cell(66,12,'',0,1,'C',0);
+    $pdf->Cell(66,12,'',0,0,'C',0);
+    $pdf->Cell(66,12,utf8_decode($datos["APE_PAT_D"])." ".utf8_decode($datos["APE_MAT_D"])." ".utf8_decode($datos["NOM_D"]),'B',1,'C',0);
+
     $pdf->Cell(66,12,'',0,0,'C',0);
     $pdf->Cell(66,12,'Nombre y Firma del derechohabiente',0,1,'C',0);
 
     $pdf->AliasNbPages();
     $pdf->Output('I','Ficha_de_inscripcion.pdf');
-    //$doc = $pdf->Output('S','Ficha_de_inscripcion.pdf');
+    /*$doc = $pdf->Output('S','Ficha_de_inscripcion.pdf');
 
         //ENvio a correo
         $email_user = "tecwebproyectcendi@gmail.com"; //OJO. Debes actualizar esta línea con tu información
         $email_password = "esdrasEsGay69"; //OJO. Debes actualizar esta línea con tu información
         $the_subject = "Prueba de envio de PDF";
-        $address_to = "angeliyoxd@gmail.com"; //OJO. Debes actualizar esta línea con tu información
+        $address_to = "luise.ascencio13@gmail.com"; //OJO. Debes actualizar esta línea con tu información
         $from_name = "PDF - Registro CENDI";
         $phpmailer = new PHPMailer();
 
@@ -344,6 +361,6 @@
         $phpmailer->AddStringAttachment($doc,"Ficha_de_inscripcion.pdf");
         $phpmailer->IsHTML(true);
 
-        //$phpmailer->Send();
-    
+            $phpmailer->Send();
+   */ 
  ?>
