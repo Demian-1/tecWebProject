@@ -20,8 +20,8 @@
 	    		<td><center> " . $row["APE_PAT"]. " </center></td>
 	    		<td><center> " . $row["APE_MAT"]. " </center></td> 
 	    		<td><center><img src='img/" . $row["FOTO_M"]. "' width=75%/></center></td>
-	    		<td><center><form id='eliminar' method='post' action='CRUDD.php'><input id='fol' type='submit' name='fol' value='" . $row["FOLIO"]. "'></form></center></td> 
-	    		<td><center><form id='modificar' method='post' action='CRUDU.php'><input id='fol' type='submit' name='fol' value='" . $row["FOLIO"]. "'></form></center></td>
+	    		<td><center><form id='eliminar' method='post'><input id='fol' type='submit' name='fol' value='" . $row["FOLIO"]. "'></form></center></td> 
+	    		<td><center><form id='modificar' method='post'><input id='fol' type='submit' name='fol' value='" . $row["FOLIO"]. "'></form></center></td>
 	    	  </tr>";
 	  		}
 	  		$res=$res."</table></center></div>";
