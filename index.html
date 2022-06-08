@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="icon" href="./assets/images/cendi_logo.png">
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="-56px -56px -56px" data-bs-smooth-scroll="true" data-offset=“59”>
     <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
             <div class="container-fluid">
                 <a href="./index.html" class="navbar-brand">
                   <img src="https://www.picng.com/upload/michael_jackson/png_michael_jackson_55462.png" alt="logo-cendi" class="d-inline-block align-text-top" width="30" height="24">
@@ -24,16 +24,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Inicio</a>
+                          <a class="nav-link" aria-current="page" href="./index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link active" href="./formulario.html">Registro</a>
+                          <a class="nav-link registro" href="./formulario.html">Registro</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Recuperar ficha</a>
+                          <a class="nav-link" href="#">Recuperar ficha</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="./Secciones.html">Áreas</a>
+                          <a class="nav-link" href="#cendis">CENDI's</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#areas">Áreas</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#ubicacion">Ubicación</a>
                         </li>
                     </ul>
                 </div>
@@ -88,20 +94,20 @@
                 
               </div>
         </div>
-        <div class="container main-info mt-5">
-          <h2 class="text-center mb-4">Centros de Desarrollo Infantil</h2>
+        <div class="container main-info mt-5" id="cendis">
+          <h2 class="text-center mb-5">Centros de Desarrollo Infantil</h2>
           <p class="text-center text-md-start fs-5">
             Los Centros de Desarrollo Infantil (CENDI) son un servicio que brinda el Instituto Politecnico Nacional a su personal académico y administrativo en activo, de tiempo completo y medio tiempo, para la educación integral de sus hijos.
             <br>Son un verdadero espacio formativo en donde el niño interactúa con su medio ambiente natural y social para permitir la evolución en su desarrollo, dentro de un marco afectivo que propicie desarrollar al máximo sus potencialidades para vivir en condiciones de libertad y dignidad.
             <br>La labor educativa de los CENDI está encaminada a promover en los niños un crecimiento y maduración, en un universo de interacciones a través de las cuales construyen y asimilan el mundo que les rodea.
           </p>
         </div>
-        <div class="container main-secciones mt-5">
+        <div class="container main-secciones mt-5" id="areas">
           <h2>Areas</h2>
           <div class="container area-medica mt-5">
             <h3>Área Médica</h3>
             <div class="row">
-              <div class="col-12 col-md-4"><img src="./img/imgprueba.jpeg" alt="Logo Area Medica"></div>
+              <div class="col-12 col-md-4"><img src="https://elmedicointeractivo.com/wp-content/uploads/2022/01/medico-700x466.jpg" alt="Logo Area Medica"></div>
               <div class="col align-bottom">
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam ut voluptas repudiandae optio corrupti, perferendis molestiae hic sint praesentium consequatur quae excepturi. Sed reprehenderit vitae ut repudiandae facilis illo atque?
@@ -114,7 +120,7 @@
           <div class="container area-nutricion mt-5">
             <h3>Nutrición</h3>
             <div class="row">
-              <div class="col-12 col-md-4"><img src="./img/imgprueba.jpeg" alt="Logo Area Medica"></div>
+              <div class="col-12 col-md-4"><img src="https://www.kibofoods.com.co/wp-content/uploads/2020/03/nutricion-y-la-importancia-para-la-salud.jpg" alt="Logo Area Medica"></div>
               <div class="col align-bottom">
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam ut voluptas repudiandae optio corrupti, perferendis molestiae hic sint praesentium consequatur quae excepturi. Sed reprehenderit vitae ut repudiandae facilis illo atque?
@@ -127,7 +133,7 @@
           <div class="container area-odontologia mt-5">
             <h3>Odontología</h3>
             <div class="row">
-              <div class="col-12 col-md-4"><img src="./img/imgprueba.jpeg" alt="Logo Area Medica"></div>
+              <div class="col-12 col-md-4"><img src="https://www.clubratoncitoperez.es/blog/wp-content/uploads/2016/09/Odontopediatria.jpg" alt="Logo Area Medica"></div>
               <div class="col align-bottom">
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam ut voluptas repudiandae optio corrupti, perferendis molestiae hic sint praesentium consequatur quae excepturi. Sed reprehenderit vitae ut repudiandae facilis illo atque?
@@ -137,10 +143,10 @@
               </div>
             </div>
           </div>
-          <div class="container area-pedagogia">
+          <div class="container area-pedagogia mt-5">
             <h3>Pedagogía</h3>
             <div class="row">
-              <div class="col-12 col-md-4"><img src="./img/imgprueba.jpeg" alt="Logo Area Medica"></div>
+              <div class="col-12 col-md-4"><img src="https://campusdocentes.es/wp-content/uploads/2021/12/maestro-profesor.jpg" alt="Logo Area Medica"></div>
               <div class="col align-bottom">
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam ut voluptas repudiandae optio corrupti, perferendis molestiae hic sint praesentium consequatur quae excepturi. Sed reprehenderit vitae ut repudiandae facilis illo atque?
@@ -150,10 +156,10 @@
               </div>
             </div>
           </div>
-          <div class="container area-psicologia">
+          <div class="container area-psicologia mt-5">
             <h3>Psicología</h3>
             <div class="row">
-              <div class="col-12 col-md-4"><img src="./img/imgprueba.jpeg" alt="Logo Area Medica"></div>
+              <div class="col-12 col-md-4"><img src="https://lamenteesmaravillosa.com/wp-content/uploads/2016/12/psicologa-con-un-nin%CC%83o.jpg" alt="Logo Area Medica"></div>
               <div class="col align-bottom">
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam ut voluptas repudiandae optio corrupti, perferendis molestiae hic sint praesentium consequatur quae excepturi. Sed reprehenderit vitae ut repudiandae facilis illo atque?
@@ -164,8 +170,44 @@
             </div>
           </div>
         </div>
-        <div class="container main-cendis">
-          Tal vez los cendis del poli, o de la ciudad
+        <div class="container main-cendis mt-5 mb-5" id="ubicacion">
+          <div class="row">
+            <div class="col text-center">
+              <h2>Ubicación</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.0958667323825!2d-99.1387853850114!3d19.494510886849167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f9b05a9be25b%3A0xbd2a9065db8df07f!2sCENDI%20Amalia%20Solorzano!5e0!3m2!1sen!2smx!4v1654719126071!5m2!1sen!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col">
+              <p>
+                <h5>CENDI Amalia Solorzano</h5>
+                07300, Oroya 760a, Lindavista, Gustavo A. Madero, Ciudad de México, CDMX
+              </p>
+              <p>
+                <h5>CENDI Clementina Batalla de Bassols</h5>
+                Sierravista 428, Lindavista, Gustavo A. Madero, 07300 Ciudad de México, CDMX
+              </p>
+              <p>
+                <h5>CENDI Eva Sámano de López Mateos</h5>
+                Av. José Loreto Fabela s/n, San Juan de Aragón II Secc, Gustavo A. Madero, 07979 Ciudad de México, CDMX
+              </p>
+              <p>
+                <h5>CENDI Laura Pérez de Bátiz</h5>
+                Plan de Agua Prieta 99, Plutarco Elías Calles, Miguel Hidalgo, 11350 Ciudad de México, CDMX
+              </p>
+              <p>
+                <h5>CENDI Laura Pérez de Bátiz</h5>
+                Plan de Agua Prieta 99, Plutarco Elías Calles, Miguel Hidalgo, 11350 Ciudad de México, CDMX
+              </p>
+              <p>
+                <h5>CENDI Margarita Salazar de Erro</h5>
+                Prolongación Carpio & Plan de San Luis, Casco de Santo Tomás, Miguel Hidalgo, 11340 Ciudad de México, CDMX
+              </p>
+            </div>
+          </div>
+          
         </div>
     </main>
     <!-- /main -->

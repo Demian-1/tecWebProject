@@ -7,6 +7,10 @@ header{
     background-color: #8D0E56;
 }
 
+.registro{
+    color: white;
+}
+
 /* Estilos del FOOTER */
 .footer{
     /* position: absolute;
@@ -36,7 +40,7 @@ main{
 }
 
 .carousel-item img{
-    height: 60vh;
+    height: 72vh;
     object-fit: cover;
 }
 .carousel-caption{
