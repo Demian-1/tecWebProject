@@ -36,6 +36,7 @@ header{
 
 /* Estilos del MAIN */
 main{
+    margin-top: 72px;
     padding: 15px;
 }
 
