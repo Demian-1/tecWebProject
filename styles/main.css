@@ -63,6 +63,11 @@ main{
     margin: 21px auto;
 }
 
-/* .main-secciones p{
-    vertical-align: middle;
-} */
+.main-secciones img{
+    width: 100%;
+}
+
+.main-secciones p{
+    font-size: 1.2rem;
+}
+
