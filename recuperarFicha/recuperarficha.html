@@ -36,46 +36,13 @@
     </header>
     <form action="respuesta.html" class="form shadow-lg" novalidate>
         <h1 class="text-center">Recupera tu ficha</h1>
-        <p>Si ya te registraste previamente, puedes recuperar tu ficha ingresando tu folio:</p>
-            <!-- Forms -->
-        <div class="form-step form-step-active" id="form-datos-basicos">
-            <h2 class="text-center">Datos basicos</h2>
-            <div class="container">
-                <div class="input-group">
-                    <span class="input-group-text m-auto">Ciclo escolar</span>
-                    <input type="text" name="ciclo_escolar" id="ciclo_escolar" value="2022-2023" disabled="true" class="form-control">
-                </div>
-                <select name="CENDI" id="CENDI" class="form-select needs-validation" required="required">
-                    <option selected disabled value="">CENDI</option>
-                    <option value="Cardenas">CENDI Amalia Solórzano de Cárdenas</option>
-                    <option value="Bassols">CENDI Clementina Batalla de Bassols</option>
-                    <option value="LopezMateos">CENDI Eva Sámano de López Mateos</option>
-                    <option value="Batiz">CENDI Laura Pérez de Bátiz</option>
-                    <option value="Erro">CENDI Margarita Salazar de Erro</option>
-                </select>
-                <div class="invalid-feedback">Seleccione una opción</div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <input type="text" name="folio" id="folio" class="form-control needs-validation" maxlength="10" placeholder="Folio" required>
-                        <div class="invalid-feedback">Debe de tener 10 dígitos. Puede comenzar por "PE" o "PP"</div>
-                    </div>
-                    <div class="col-sm-6">
-                        <select name="grupo" id="grupo" class="form-select needs-validation" required="required">
-                            <option selected disabled value="">Grupo</option>
-                            <option value="lacI">Lac I - II</option>
-                            <option value="lacII">Lac III - Mat I</option>
-                            <option value="matIIA">Mat IIA</option>
-                            <option value="matIIB">Mat IIB</option>
-                        </select>
-                        <div class="invalid-feedback">Seleccione una opción</div>
-                    </div>
-                </div>
-                <div class="btns-group remove-on-check">
-                    <div></div>
-                    <a href="#" class="btn btn-nxt float-end me-0">Siguiente</a>
-                </div>
-            </div>
-        </div>
+        <p class="mt-4 pt-4">Si ya te registraste previamente, puedes recuperar tu ficha ingresando tu folio:</p>
+        <input type="text" name="folio" id="folio" class="form-control needs-validation" maxlength="10" placeholder="Folio" required>
+        <div class="invalid-feedback">Debe de tener 10 dígitos. Puede comenzar por "PE" o "PP"</div>
+        <div class="btns-group remove-on-check">
+            <div></div>
+            <a href="#" class="btn btn-nxt float-end me-0">Recuperar Ficha</a>
+        </div>  
      </form>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
