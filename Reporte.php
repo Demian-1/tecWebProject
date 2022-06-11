@@ -16,7 +16,7 @@
     $bd='dbtecweb';
     
     $conexion = new mysqli($server,$user,$pass,$bd);
-    $bnum='2022010001';
+    $bnum='2022013333';
     $morro ="SELECT * FROM MORRO 
 	INNER JOIN CENDI on CENDI_idCENDI=idCENDI 
     INNER JOIN CITAS on CITAS_idCITAS=idCITAS 
@@ -274,51 +274,105 @@
     $pdf->Cell(99,5,utf8_decode('Teléfono de Trabajo'),1,0,'C',0); 
     $pdf->Cell(33,5,utf8_decode('Extensión'),1,0,'C',0);
     $pdf->Cell(66,5,utf8_decode('Religión'),1,1,'C',0);
+    if($datos["AUT_D"]==1){
+        $pdf->AddPage('P','letter',0);
+        $pdf->SetFont('Arial','B',8);
+        $pdf->Ln(30);
+        $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRES) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
+        $pdf->Ln(10);
+        $pdf->Cell(25,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_C"],95,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],155,62,30,0,''),1,1,'C');
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial','B',12); 
+        $pdf->Cell(25,5,'',0,0,'C');
+        $pdf->Cell(30,5,'DERECHOHABIENTE',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Cell(30,5,utf8_decode('CÓNYUGE'),0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Cell(30,5,'PERSONA AUTORIZADA',0,1,'C');
+        $pdf->Cell(25,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Ln(10);
+    }else{
+        $pdf->AddPage('P','letter',0);
+        $pdf->SetFont('Arial','B',8);
+        $pdf->Ln(30);
+        $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE Y CÓNYUGE(PADRE,MADRE)'),0,1,'C');
+        $pdf->Ln(10);
+        $pdf->Cell(25,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(88,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_C"],153,62,30,0,''),1,1,'C');
+        
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial','B',12); 
+        $pdf->Cell(25,5,'',0,0,'C');
+        $pdf->Cell(30,5,'DERECHOHABIENTE',0,0,'C');
+        $pdf->Cell(88,5,'',0,0,'C');
+        $pdf->Cell(30,5,utf8_decode('CÓNYUGE'),0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        
+        $pdf->Cell(25,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Ln(10);
+    }
+    
+    if($datos["GRUPO_idGRUPO"]==1){
 
-    $pdf->AddPage('P','letter',0);
-    $pdf->SetFont('Arial','B',8);
-    $pdf->Ln(30);
-    $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRES) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
-    $pdf->Ln(10);
-    $pdf->Cell(25,30,'',0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
-    $pdf->Cell(30,30,'',0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_C"],95,62,30,0,''),1,0,'C');
-    $pdf->Cell(30,30,'',0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],155,62,30,0,''),1,1,'C');
-    $pdf->Ln(5);
-    $pdf->SetFont('Arial','B',12); 
-    $pdf->Cell(25,5,'',0,0,'C');
-    $pdf->Cell(30,5,'DERECHOHABIENTE',0,0,'C');
-    $pdf->Cell(30,5,'',0,0,'C');
-    $pdf->Cell(30,5,utf8_decode('CÓNYUGE'),0,0,'C');
-    $pdf->Cell(30,5,'',0,0,'C');
-    $pdf->Cell(30,5,'PERSONA AUTORIZADA',0,1,'C');
-    $pdf->Cell(25,5,'',0,0,'C');
-    $pdf->Cell(30,5,'',0,0,'C');
-    $pdf->Cell(30,5,'',0,0,'C');
-    $pdf->Ln(10);
-    $pdf->SetFont('Arial','B',12);
-    $pdf->Cell(198,12,utf8_decode('Presentarse el día'),0,1,'L');
-    $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
-    $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
-    $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
-    $pdf->Cell(25,12,date("m"),0,0,'C',1);
-    $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
-    $pdf->Cell(25,12,date("Y"),0,1,'C',1);
-    $pdf->Cell(198,12,utf8_decode('A las:'),0,1,'L');
-    $pdf->Cell(66,12,'',0,0,'C',0);
-    $pdf->Cell(66,12,utf8_decode("Inicio: ".$datos["INICIO"]." Fin ".$datos["FIN"]),0,0,'C',1);
-    $pdf->Cell(66,12,'Hrs.',0,1,'L',0);
-    $pdf->Ln(10);
-    $pdf->SetFont('Arial','B',12);
-    $pdf->Cell(198,12,utf8_decode('Expedido el día:'),0,1,'L');
-    $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
-    $pdf->Cell(14,12,date("d")-1,0,0,'C',1);
-    $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
-    $pdf->Cell(25,12,date("m"),0,0,'C',1);
-    $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
-    $pdf->Cell(25,12,date("Y"),0,1,'C',1);
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(198,12,utf8_decode('Presentarse a la entevista y entrega de papeles el día'),0,1,'L');
+        $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
+        $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("m"),0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("Y"),0,1,'C',1);
+        $pdf->Cell(198,12,utf8_decode('A las:'),0,1,'L');
+        $pdf->Cell(66,12,'',0,0,'C',0);
+        $pdf->Cell(66,12,utf8_decode("Inicio: ".$datos["INICIO"]." Fin ".$datos["FIN"]),0,0,'C',1);
+        $pdf->Cell(66,12,'Hrs.',0,1,'L',0);
+        $pdf->Ln(10);
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(198,12,utf8_decode('Expedido el día:'),0,1,'L');
+        $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
+        $pdf->Cell(14,12,date("d"),0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("m"),0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("Y"),0,1,'C',1);
+        
+    }else{
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(198,12,utf8_decode('Presentarse a la entrega de papeles el día'),0,1,'L');
+        $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
+        $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("m"),0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("Y"),0,1,'C',1);
+        $pdf->Cell(198,12,utf8_decode('A las:'),0,1,'L');
+        $pdf->Cell(66,12,'',0,0,'C',0);
+        $pdf->Cell(66,12,utf8_decode("Inicio: ".$datos["INICIO"]." Fin ".$datos["FIN"]),0,0,'C',1);
+        $pdf->Cell(66,12,'Hrs.',0,1,'L',0);
+        $pdf->Ln(10);
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(198,12,utf8_decode('Expedido el día:'),0,1,'L');
+        $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
+        $pdf->Cell(14,12,date("d"),0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("m"),0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("Y"),0,1,'C',1);
+        
+    }
+    
+    
     $pdf->Ln(10);
     $pdf->Cell(66,12,'',0,0,'C',0);
     $pdf->Cell(66,12,'',0,1,'C',0);
@@ -330,13 +384,13 @@
 
     $pdf->AliasNbPages();
     $pdf->Output('I','Ficha_de_inscripcion.pdf');
-    /*$doc = $pdf->Output('S','Ficha_de_inscripcion.pdf');
+     $doc = $pdf->Output('S','Ficha_de_inscripcion.pdf');
 
         //ENvio a correo
         $email_user = "tecwebproyectcendi@gmail.com"; //OJO. Debes actualizar esta línea con tu información
-        $email_password = "esdrasEsGay69"; //OJO. Debes actualizar esta línea con tu información
+        $email_password = "sjnvyzumxjcrzboq"; //OJO. Debes actualizar esta línea con tu información
         $the_subject = "Prueba de envio de PDF";
-        $address_to = "luise.ascencio13@gmail.com"; //OJO. Debes actualizar esta línea con tu información
+        $address_to = $datos["MAIL_D"]; //OJO. Debes actualizar esta línea con tu información
         $from_name = "PDF - Registro CENDI";
         $phpmailer = new PHPMailer();
 
@@ -355,12 +409,11 @@
         $phpmailer->AddAddress($address_to); // recipients email
 
         $phpmailer->Subject = $the_subject;	
-        $phpmailer->Body .="<h1 style='color:#3498db;'>Correo Con PDF proceso inscripcion-reinscripcion</h1>";
+        $phpmailer->Body .="<h1 style='color:#3498db;'>Correo Con PDF proceso Inscripcion</h1>";
         $phpmailer->Body .= "<p>Esta es una prueba del envío de correo :)</p>";
         $phpmailer->Body .= "<p>Fecha: ".date("d-m-Y")."</p>";
         $phpmailer->AddStringAttachment($doc,"Ficha_de_inscripcion.pdf");
         $phpmailer->IsHTML(true);
 
-            $phpmailer->Send();
-   */ 
+        $phpmailer->Send();
  ?>
