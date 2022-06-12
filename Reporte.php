@@ -10,12 +10,7 @@
     include("phpMailer/class.phpmailer.php");
     include("phpMailer/class.smtp.php");
     require('fpdf184/fpdf.php');
-    $server ='localhost';
-    $user='root';
-    $pass='';
-    $bd='dbtecweb';
-    
-    $conexion = new mysqli($server,$user,$pass,$bd);
+    include 'conexion.php';
     // $bnum='2022013333';
     $bnum=$_GET['folio'];
     $morro ="SELECT * FROM MORRO 
@@ -385,7 +380,7 @@
 
     $pdf->AliasNbPages();
     $pdf->Output('I','Ficha_de_inscripcion.pdf');
-     $doc = $pdf->Output('S','Ficha_de_inscripcion.pdf');
+    $doc = $pdf->Output('S','Ficha_de_inscripcion.pdf');
 
         //ENvio a correo
         $email_user = "tecwebproyectcendi@gmail.com"; //OJO. Debes actualizar esta línea con tu información

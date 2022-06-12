@@ -1,13 +1,5 @@
 <?php
-$server ='localhost';
-$user='root';
-$pass='';
-$bd='dbtecweb';
-$conexion = new mysqli($server,$user,$pass,$bd);
-if(!$conexion){
-    die(mysqli_error($conexion));
-}
-
+include '../conexion.php';
 
 if(isset($_POST['submit'])){
     $folio=$_POST['folio'];
