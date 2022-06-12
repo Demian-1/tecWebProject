@@ -11,8 +11,8 @@ $(document).ready(function(){
                 if(respAX==''){  // No existe el folio
                     $("#mensaje").html("No existe el folio. Inténtalo de nuevo o regístrate dando clic <a href='../formulario.html'>aquí</a>");
                 }else{ // Existe el folio
-                    alert("Hola, soy un string");
-                    alert(respAX);
+                    var url = "../Reporte.php?folio="+folio;
+                    window.open(url);
                 }
             }
 
