@@ -12,11 +12,12 @@
     require('fpdf184/fpdf.php');
     $server ='localhost';
     $user='root';
-    $pass='n0m3l0';
+    $pass='';
     $bd='dbtecweb';
     
     $conexion = new mysqli($server,$user,$pass,$bd);
-    $bnum='2022013333';
+    // $bnum='2022013333';
+    $bnum=$_GET['folio'];
     $morro ="SELECT * FROM MORRO 
 	INNER JOIN CENDI on CENDI_idCENDI=idCENDI 
     INNER JOIN CITAS on CITAS_idCITAS=idCITAS 
@@ -389,6 +390,7 @@
         //ENvio a correo
         $email_user = "tecwebproyectcendi@gmail.com"; //OJO. Debes actualizar esta línea con tu información
         $email_password = "sjnvyzumxjcrzboq"; //OJO. Debes actualizar esta línea con tu información
+        // $email_password = "esdrasEsGay69"; //OJO. Debes actualizar esta línea con tu información
         $the_subject = "Prueba de envio de PDF";
         $address_to = $datos["MAIL_D"]; //OJO. Debes actualizar esta línea con tu información
         $from_name = "PDF - Registro CENDI";

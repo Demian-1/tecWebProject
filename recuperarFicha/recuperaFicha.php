@@ -1,3 +1,24 @@
+<?php
+$server ='localhost';
+$user='root';
+$pass='';
+$bd='dbtecweb';
+$conexion = new mysqli($server,$user,$pass,$bd);
+if(!$conexion){
+    die(mysqli_error($conexion));
+}
+
+
+if(isset($_POST['submit'])){
+    $folio=$_POST['folio'];
+    header('location:../Reporte.php?folio='.$folio.'');
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,15 +55,14 @@
             </div>
         </nav>
     </header>
-    <form action="respuesta.html" class="form shadow-lg" novalidate>
+    <form method="post" class="form shadow-lg" novalidate>
         <h1 class="text-center">Recupera tu ficha</h1>
         <p class="mt-4 pt-4">Si ya te registraste previamente, puedes recuperar tu ficha ingresando tu folio:</p>
         <input type="text" name="folio" id="folio" class="form-control needs-validation" maxlength="10" placeholder="Folio" required>
         <div class="invalid-feedback">Debe de tener 10 dígitos. Puede comenzar por "PE" o "PP"</div>
-        <div class="btns-group remove-on-check">
-            <div></div>
-            <a href="#" class="btn btn-nxt float-end me-0">Recuperar Ficha</a>
-        </div>  
+        
+        <button type="submit" class="btn" name="submit">Submit</button>
+       
      </form>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
