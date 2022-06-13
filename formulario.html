@@ -57,11 +57,11 @@
                 <div class="form-floating">
                     <select name="CENDI" id="CENDI" class="form-select needs-validation" required="required">
                         <option selected disabled value="">Seleccione una opción</option>
-                        <option value="Cardenas">CENDI Amalia Solórzano de Cárdenas</option>
-                        <option value="Bassols">CENDI Clementina Batalla de Bassols</option>
-                        <option value="LopezMateos">CENDI Eva Sámano de López Mateos</option>
-                        <option value="Batiz">CENDI Laura Pérez de Bátiz</option>
-                        <option value="Erro">CENDI Margarita Salazar de Erro</option>
+                        <option value="1">CENDI Amalia Solórzano de Cárdenas</option>
+                        <option value="2" disabled>CENDI Clementina Batalla de Bassols</option>
+                        <option value="3" disabled>CENDI Eva Sámano de López Mateos</option>
+                        <option value="4" disabled>CENDI Laura Pérez de Bátiz</option>
+                        <option value="5" disabled>CENDI Margarita Salazar de Erro</option>
                     </select>
                     <label for="CENDI">CENDI</label>
                     <div class="invalid-feedback">Seleccione una opción</div>
@@ -80,8 +80,11 @@
                                 <option selected disabled value="">Seleccione una opción</option>
                                 <option value="1">Lac I - II</option>
                                 <option value="2">Lac III - Mat I</option>
-                                <option value="matIIA">Mat IIA</option>
-                                <option value="matIIB">Mat IIB</option>
+                                <option value="3">Mat IIA</option>
+                                <option value="4">Mat IIB</option>
+                                <option value="5">PIA y PIB</option>
+                                <option value="6">PIIA y PIIB</option>
+                                <option value="7">PIIIA y PIIIB</option>
                             </select>
                             <label for="grupo">Grupo</label>
                             <div class="invalid-feedback">Seleccione una opción</div>
@@ -198,16 +201,47 @@
                 <div class="row border-top">
                     <div class="col-sm-4">
                         <div class="form-floating">
-                            <input type="text" name="der_cp" id="der_cp" placeholder="Código postal" class="form-control needs-validation" required>
+                            <input type="number" name="der_cp" id="der_cp" placeholder="Código postal" class="form-control needs-validation" required pattern=".{5,5}">
                             <label for="der_cp">C.P</label>
-                            <div class="invalid-feedback">Introduzca un C.P</div>
+                            <div class="invalid-feedback">Introduzca un C.P válido</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="form-floating">
                             <select name="der_entidad" id="der_entidad" class="form-select needs-validation" required="required">
                                 <option disabled selected value="">Seleccione una opción</option>
-                                <option value="1">test</option>
+                                <option value="Aguascalientes">Aguascalientes</option>
+                                <option value="Baja California">Baja California</option>
+                                <option value="Baja California Sur">Baja California Sur</option>
+                                <option value="Campeche">Campeche</option>
+                                <option value="Chiapas">Chiapas</option>
+                                <option value="Chihuahua">Chihuahua</option>
+                                <option value="CDMX">Ciudad de México</option>
+                                <option value="Coahuila">Coahuila</option>
+                                <option value="Colima">Colima</option>
+                                <option value="Durango">Durango</option>
+                                <option value="Estado de México">Estado de México</option>
+                                <option value="Guanajuato">Guanajuato</option>
+                                <option value="Guerrero">Guerrero</option>
+                                <option value="Hidalgo">Hidalgo</option>
+                                <option value="Jalisco">Jalisco</option>
+                                <option value="Michoacán">Michoacán</option>
+                                <option value="Morelos">Morelos</option>
+                                <option value="Nayarit">Nayarit</option>
+                                <option value="Nuevo León">Nuevo León</option>
+                                <option value="Oaxaca">Oaxaca</option>
+                                <option value="Puebla">Puebla</option>
+                                <option value="Querétaro">Querétaro</option>
+                                <option value="Quintana Roo">Quintana Roo</option>
+                                <option value="San Luis Potosí">San Luis Potosí</option>
+                                <option value="Sinaloa">Sinaloa</option>
+                                <option value="Sonora">Sonora</option>
+                                <option value="Tabasco">Tabasco</option>
+                                <option value="Tamaulipas">Tamaulipas</option>
+                                <option value="Tlaxcala">Tlaxcala</option>
+                                <option value="Veracruz">Veracruz</option>
+                                <option value="Yucatán">Yucatán</option>
+                                <option value="Zacatecas">Zacatecas</option>
                             </select>
                             <label for="der_entidad">Entidad</label>
                             <div class="invalid-feedback">Introduzca una entidad</div>
@@ -284,9 +318,9 @@
                         <div class="form-floating">
                             <select name="der_opcupacion" id="der_ocupacion" class="form-select needs-validation" required="required">
                             <option selected disabled value="">Seleccione una opción</option>
-                            <option value="der_docente">Docente</option>
-                            <option value="der_PAAE">PAEE</option>
-                            <option value="der_funcionari">Funcionario(a)</option>
+                            <option value="1">Docente</option>
+                            <option value="2">PAEE</option>
+                            <option value="3">Funcionario(a)</option>
                             </select>
                             <label for="der_ocupacion">Ocupación</label>
                             <div class="invalid-feedback">Seleccione una opción</div>
@@ -310,7 +344,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-floating">
-                            <input type="text" name="der_numEmpleado" id="der_numEmpleado" placeholder="Número de empleado" class="form-control needs-validation" required minlength="5" maxlength="7">
+                            <input type="number" name="der_numEmpleado" id="der_numEmpleado" placeholder="Número de empleado" class="form-control needs-validation" required pattern=".{5,7}">
                             <label for="der_numEmpleado">Número de empleado</label>
                             <div class="invalid-feedback">Introduzca un número válido (5-7 dígitos)</div>
                         </div>
@@ -319,7 +353,59 @@
                 <div class="form-floating">
                     <select name="der_adscripcion" id="der_adscripcion" class="form-select needs-validation" required="required">
                         <option disabled selected value="">Seleccione una opción</option>
-                        <option value="1">test</option>
+                        <option value="1">CECyT 1 "Gonzalo Vazques Vela"</option>
+                        <option value="2">CECyT 2 "Miguel Bernard"</option>
+                        <option value="3">CECyT 3 "Estanislao Ramírez Ruiz"</option>
+                        <option value="4">CECyT 4 "Lázaro Cárdenas"</option>
+                        <option value="5">CECyT 5 "Benito Juárez"</option>
+                        <option value="6">CECyT 6 "Miguel Othon de Mendizabal"</option>
+                        <option value="7">CECyT 7 "Cuahutemoc"</option>
+                        <option value="8">CECyT 8 "Narcisso Bassols"</option>
+                        <option value="9">CECyT 9 "Juan de Dios Bátiz"</option>
+                        <option value="10">CECyT 10 "Carlos Vallejo Marquez"</option>
+                        <option value="11">CECyT 11 "Wilfrido Massieu"</option>
+                        <option value="12">CECyT 12 "José María Morelos"</option>
+                        <option value="13">CECyT 13 "Ricardo Flores Magón"</option>
+                        <option value="14">CECyT 14 "Luis Enrique Erro"</option>
+                        <option value="15">CECyT 15 "Diodoro Antunez Echegaray"</option>
+                        <option value="16">CECyT 16 "Hidalgo"</option>
+                        <option value="17">CECyT 17 "León, Guanajuato"</option>
+                        <option value="18">CECyT 18 "Zacatecas"</option>
+                        <option value="19">CECyT 19 "Leona Vicario"</option>
+                        <option value="20">CET 1 "Walter Cross Buchanan"</option>
+                        <option value="21">CICS Milpa Alta</option>
+                        <option value="22">CICS UST</option>
+                        <option value="23">ENCB</option>
+                        <option value="24">ENMH</option>
+                        <option value="25">ESCA Santo Tomás</option>
+                        <option value="26">ESCA Tepepan</option>
+                        <option value="27">ESCOM</option>
+                        <option value="28">ESE</option>
+                        <option value="29">ESEO</option>
+                        <option value="30">ESFM</option>
+                        <option value="31">ESIA Tecamachalco</option>
+                        <option value="32">ESIA Ticomán</option>
+                        <option value="33">ESIA-Zac</option>
+                        <option value="34">ESIME Azcapotzalco</option>
+                        <option value="35">ESIME Culhuacan</option>
+                        <option value="36">ESIME Ticomán</option>
+                        <option value="37">ESIME Zacatenco</option>
+                        <option value="38">ESIQIE</option>
+                        <option value="39">ESIT</option>
+                        <option value="40">ESM</option>
+                        <option value="41">EST</option>
+                        <option value="42">UPIBI</option>
+                        <option value="43">UPIICSA</option>
+                        <option value="44">UPIIG</option>
+                        <option value="45">UPIITA</option>
+                        <option value="46">UPIIZ</option>
+                        <option value="47">ENBA</option>
+                        <option value="48">UPIIH</option>
+                        <option value="49">UPIIP</option>
+                        <option value="50">UPIIC</option>
+                        <option value="51">UPITEM</option>
+                        <option value="52">UPIIT</option>
+                        <option value="53">Área Central</option>
                     </select>
                     <label for="der_adscripcion">Adscripción</label>
                     <div class="invalid-feedback">Seleccione una opción</div>
@@ -329,7 +415,9 @@
                         <div class="form-floating">
                             <select name="der_horario" id="der_horario" class="form-select needs-validation" required="required">
                                 <option selected disabled value="">Seleccione una opción</option>
-                                <option value="1">test</option>
+                                <option value="1">7:00 - 15:00</option>
+                                <option value="2">8:00 - 15:00</option>
+                                <option value="3">7:00 - 14:00</option>
                             </select>
                             <label for="der_horario">Horario</label>
                             <div class="invalid-feedback">Seleccione una opción</div>
@@ -337,7 +425,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-floating">
-                            <input type="text" name="der_extension" id="der_extension" placeholder="Extensión" class="form-control needs-validation" pattern="\d*" minlength="5" maxlength="5" required>
+                            <input type="number" name="der_extension" id="der_extension" placeholder="Extensión" class="form-control needs-validation" required>
                             <label for="der_extension">Extensión</label>
                             <div class="invalid-feedback">Introduzca un número válido</div>
                         </div>
@@ -403,16 +491,47 @@
                 <div class="row border-top">
                     <div class="col-sm-4">
                         <div class="form-floating">
-                            <input type="text" name="cony_cp" id="cony_cp" placeholder="Código postal" class="form-control needs-validation" required>
+                            <input type="number" name="cony_cp" id="cony_cp" placeholder="Código postal" class="form-control needs-validation" required pattern=".{5,5}">
                             <label for="cony_cp">C.P</label>
-                            <div class="invalid-feedback">Introduzca un C.P</div>
+                            <div class="invalid-feedback">Introduzca un C.P válido</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="form-floating">
                             <select name="cony_entidad" id="cony_entidad" class="form-select needs-validation" required="required">
                                 <option disabled selected value="">Seleccione una opción</option>
-                                <option value="1">test</option>
+                                <option value="Aguascalientes">Aguascalientes</option>
+                                <option value="Baja California">Baja California</option>
+                                <option value="Baja California Sur">Baja California Sur</option>
+                                <option value="Campeche">Campeche</option>
+                                <option value="Chiapas">Chiapas</option>
+                                <option value="Chihuahua">Chihuahua</option>
+                                <option value="CDMX">Ciudad de México</option>
+                                <option value="Coahuila">Coahuila</option>
+                                <option value="Colima">Colima</option>
+                                <option value="Durango">Durango</option>
+                                <option value="Estado de México">Estado de México</option>
+                                <option value="Guanajuato">Guanajuato</option>
+                                <option value="Guerrero">Guerrero</option>
+                                <option value="Hidalgo">Hidalgo</option>
+                                <option value="Jalisco">Jalisco</option>
+                                <option value="Michoacán">Michoacán</option>
+                                <option value="Morelos">Morelos</option>
+                                <option value="Nayarit">Nayarit</option>
+                                <option value="Nuevo León">Nuevo León</option>
+                                <option value="Oaxaca">Oaxaca</option>
+                                <option value="Puebla">Puebla</option>
+                                <option value="Querétaro">Querétaro</option>
+                                <option value="Quintana Roo">Quintana Roo</option>
+                                <option value="San Luis Potosí">San Luis Potosí</option>
+                                <option value="Sinaloa">Sinaloa</option>
+                                <option value="Sonora">Sonora</option>
+                                <option value="Tabasco">Tabasco</option>
+                                <option value="Tamaulipas">Tamaulipas</option>
+                                <option value="Tlaxcala">Tlaxcala</option>
+                                <option value="Veracruz">Veracruz</option>
+                                <option value="Yucatán">Yucatán</option>
+                                <option value="Zacatecas">Zacatecas</option>
                             </select>
                             <label for="cony_entidad">Entidad</label>
                             <div class="invalid-feedback">Introduzca una entidad</div>
@@ -494,8 +613,8 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-floating">
-                            <input type="tel" name="cony_tel_trabajo_ext" id="cony_tel_trabajo_ext" class="form-control needs-validation" placeholder="Extensión Tel." pattern="\d*" minlength="5" maxlength="5">
-                            <label for="cony_tel_trabajo_ext">Extensión</label>
+                            <input type="number" name="cony_extension" id="cony_extension" class="form-control needs-validation" placeholder="Extensión Tel." pattern=".{5,5}">
+                            <label for="cony_extension">Extensión</label>
                             <div class="invalid-feedback">Introduzca una extensión válida</div>
                         </div>
                     </div>
