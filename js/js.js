@@ -15,7 +15,6 @@ nextBtns.forEach(btn =>{
 			}else{
 				formStepsNum++;
 			}
-			console.log("estamos en: " + formStepsNum);
 			updateFormsSteps();
 			updateProgressBar();
 		}
@@ -37,7 +36,7 @@ prevBtns.forEach(btn =>{
 function checkVal(){
 	let errors = 0;
 	let campos = document.querySelectorAll(".form-step-active .needs-validation");
-	const regExTxt = /^[a-zA-Z\s]*$/;
+	const regExTxt = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/g;
 	const regExFol = /(?:P[PE]|\d\d)\d\d\d\d\d\d\d\d/i;
 	const regExCURP = /[A-Z][A-Z][A-Z][A-Z]\d\d\d\d\d\d[A-Z][A-Z][A-Z][zA-Z][A-Z][A-Z][A-Z0-9][A-Z0-9]/gi;
 	for( i = 0; i < campos.length ; i++){
@@ -61,13 +60,16 @@ function checkVal(){
 			}
 		}
 		else if(campos[i].id == "kid_age"){
-			if(campos[i].value > 6 || campos[i].value < 0){
+			const ageMonths = document.getElementById("kid_age_months");
+			if((ageMonths.value < 6 && campos[i].value==0) || (campos[i].value > 6 || campos[i].value < 0)){
+				ageMonths.classList.add("is-invalid");
 				campos[i].classList.add("is-invalid");
 				document.getElementById("invalid-age").style.display = "block";
 				errors++;
 			}
 			else{
 				document.getElementById("invalid-age").style.display = "none";
+				ageMonths.classList.remove("is-invalid");
 			}
 		}
 		if(!campos[i].checkValidity()){
@@ -81,7 +83,7 @@ function checkVal(){
 function updateFormsSteps(){
 	const revision = document.getElementById("revision");
 	const btnsgroup = document.querySelectorAll(".btns-group.remove-on-check");
-	const inputs = document.querySelectorAll(".form-control:not(#kid_age,#kid_age_months,[id$='entidad'],[id$='alcaldia'],[id$='colonia']),.form-select");
+	const inputs = document.querySelectorAll(".form-control:not(#kid_age,#kid_age_months),.form-select");
 	const btns_revision = document.getElementById("btns-revision");
 	const hide_on_revision = document.querySelectorAll(".hide-on-revision");
 
@@ -150,10 +152,18 @@ document.getElementsByTagName("form")[0].onkeypress = function(e) {
 /* Funciones de cálculo automático */
 
 function calcularEdad() {
-  	const date = new Date(document.getElementById('kid_birthday').value).getTime();
+  	const dateOfBirth = new Date(document.getElementById('kid_birthday').value); 
+	const date = dateOfBirth.getTime();
+	var month = dateOfBirth.getMonth();
+	var currMonth = new Date().getMonth();
   	const now = new Date().getTime();
-  	var age = Math.floor((now - date ) / (1000 * 60 * 60 * 24 * 365));
-    (document.getElementById('kid_age')).value = age;  
+  	var age = Math.floor((now - date ) / (1000 * 60 * 60 * 24 * 365.25));
+    (document.getElementById('kid_age')).value = age;
+	if( currMonth >= month){
+		(document.getElementById('kid_age_months')).value = currMonth - month;
+	} else{
+		(document.getElementById('kid_age_months')).value = 12 + currMonth - month;
+	}
 }
 
 /* Image related JS */
