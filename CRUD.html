@@ -3,15 +3,59 @@
 <head>
 	<link rel="stylesheet" href="./styles/main.css">
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles/formulario.css">
+    <link rel="icon" href="./assets/images/logo-cendi.jpg">
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/jsCRUDO.js"></script>
+    <script src="js/js.js" defer></script>
 	<title>Hola ADMIN</title>
 </head>
 <body>
-	<form id=recargar>
-		<input type="submit" name="botonrecarga" value="recargar base">
+	<form id="accion" class="form shadow-lg" novalidate>
+		<h1 class="text-center">Acciones de administrador</h1>
+            <!-- Barra de progreso -->
+            <!--<div class="progressbar">
+                <div class="progress" id="progress"></div>  
+                <div class="progress-step progress-step-active" data-title="Seleccionar accion"></div>
+                <div class="progress-step" data-title="Insertar datos"></div>
+            </div>-->
+            <h1 id="revision" class="text-center d-none">Revisión</h1>
+        		<!--<div class="form-step form-step-active" id="form-datos-basicos">-->
+            		<h2 class="text-center">¿Que desea realizar?</h2>
+            		<div class="container">
+	                	<div class="input-group">
+	                    	<select name="Tipo" id="Tipo" class="form-select needs-validation" required="required">
+		                    	<option selected disabled value="">Acciones</option>
+		                    	<option value="D">Borrar datos del Niño/Niña</option>
+		                    	<option value="U">Modificar datos del Niño Niña</option>
+		                    	<option value="R">Ver niños registradoss</option>
+		                    	<option value="C">Registrar Nuevo Niño/Niña</option>
+		                	</select>	
+	                	</div>
+	                	<div class="invalid-feedback">Seleccione una opción</div>
+            			<div class="input-group">
+	                        <input type="text" name="fol" id="fol" placeholder="FOLIO: PPXXXXXXXX/PEXXXXXXXX/XXXXXXXXXX" class="form-control needs-validation" required>
+	                        <div class="invalid-feedback">Introduzca un apellido válidos</div>
+	                    </div>
+	                    <div class="input-group">
+	                    	<select name="table" id="table" class="form-select needs-validation" required="required">
+		                    <option selected disabled value="">Tabla</option>
+		                    <option value="MORRO">Niños</option>
+		                    <option value="DERECHOHABIENTE">Derechohabiente</option>
+		                    <option value="CONYUGUE">Conygues</option>
+		                </select>	
+	                	</div>
+	          			<input id="sub" type="submit" value="Ejecutar" class="btn w-100 m-auto">
+	                </div>  
+            	<!--</div
+	            <div class="form-step">
+	            <h2 class="text-center">Datos del niño o de la niña</h2>
+	            <div class="container">
+	                
+	            </div>-->
 	</form>
-	<div id=container>
+	<div id=result>
 		
 	</div>
 </body>
