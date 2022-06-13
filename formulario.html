@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/formulario.css">
     <link rel="icon" href="./assets/images/logo-cendi.jpg">
-    <script src="js/js.js" defer></script>
+    <script src="./js/js.js" defer></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -34,7 +35,7 @@
             </div>
         </nav>
     </header>
-    <form action="respuesta.html" class="form shadow-lg" novalidate>
+    <form class="form shadow-lg" novalidate id="formulario-prin">
         <h1 class="text-center">Registro 2022-2023</h1>
             <!-- Barra de progreso -->
             <div class="progressbar">
@@ -56,11 +57,11 @@
                 </div>
                 <select name="CENDI" id="CENDI" class="form-select needs-validation" required="required">
                     <option selected disabled value="">CENDI</option>
-                    <option value="Cardenas">CENDI Amalia Solórzano de Cárdenas</option>
-                    <option value="Bassols">CENDI Clementina Batalla de Bassols</option>
-                    <option value="LopezMateos">CENDI Eva Sámano de López Mateos</option>
-                    <option value="Batiz">CENDI Laura Pérez de Bátiz</option>
-                    <option value="Erro">CENDI Margarita Salazar de Erro</option>
+                    <option value="1">CENDI Amalia Solórzano de Cárdenas</option>
+                    <option value="2">CENDI Clementina Batalla de Bassols</option>
+                    <option value="3">CENDI Eva Sámano de López Mateos</option>
+                    <option value="4">CENDI Laura Pérez de Bátiz</option>
+                    <option value="5">CENDI Margarita Salazar de Erro</option>
                 </select>
                 <div class="invalid-feedback">Seleccione una opción</div>
                 <div class="row">
@@ -75,6 +76,9 @@
                             <option value="lacII">Lac III - Mat I</option>
                             <option value="matIIA">Mat IIA</option>
                             <option value="matIIB">Mat IIB</option>
+                            <option value="matIIB">PIA y PIB</option>
+                            <option value="matIIB">PIIA y PIIB</option>
+                            <option value="matIIB"></option>
                         </select>
                         <div class="invalid-feedback">Seleccione una opción</div>
                     </div>
@@ -371,5 +375,6 @@
         </div>
      </form>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+     <script src="./form-base/form-base.js"></script>
 </body>
 </html>
