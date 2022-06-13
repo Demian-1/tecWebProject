@@ -9,7 +9,7 @@ let formStepsNum = 0;
 
 nextBtns.forEach(btn =>{
 	btn.addEventListener("click", () => {
-		if(!checkVal()){
+		if(checkVal()){
 			if(formStepsNum == 2 && hasPartner.checked == true){
 				formStepsNum+=2;
 			}else{
