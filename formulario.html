@@ -102,13 +102,14 @@
             <h2 class="text-center">Datos del niño o de la niña</h2>
             <div class="container">
                 <div class="text-center">
-                    <input type="file" name="inpFile" id="inpFile" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
+                    <input type="file" name="kid_img" id="kid_img" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
                     <div class="image-preview m-auto" id="imagePreview">
                         <img src="" alt="Foto" class="image-preview__image">
                         <span class="image-preview__default-text">Foto</span>
                     </div>
+                    <div class="imgTxt">Foto de la niña/niño</div>
                     <div class="btns-group d-block remove-on-check">
-                        <label for="inpFile" class="btn mx-0">Selecciona una foto</label>
+                        <label for="kid_img" class="btn mx-0">Selecciona una foto</label>
                     </div>
                     <div class="invalid-feedback">Seleccione una foto</div>
                 </div> 
@@ -167,13 +168,14 @@
             <h2 class="text-center">Datos del o la derechohabiente</h2>
             <div class="container">
                 <div class="text-center">
-                    <input type="file" name="inpFile2" id="inpFile2" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
+                    <input type="file" name="der_img" id="der_img" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
                     <div class="image-preview m-auto" id="imagePreview2">
                         <img src="" alt="Foto" class="image-preview__image">
                         <span class="image-preview__default-text">Foto</span>
                     </div>
+                    <div class="imgTxt">Foto del derechohabiente</div>
                     <div class="btns-group d-block remove-on-check">
-                        <label for="inpFile2" class="btn mx-0">Selecciona una foto</label>
+                        <label for="der_img" class="btn mx-0">Selecciona una foto</label>
                     </div>
                     <div class="invalid-feedback">Seleccione una foto</div>
                 </div> 
@@ -433,6 +435,33 @@
                 </div>
                 <div class="row hide-on-revision">
                     <div class="col-sm-6 m-auto">
+                        <span class="input-group-text">¿Desea agregar a una persona responsable?</span>
+                    </div>
+                    <div id="radiobtns" class="col-sm-6 btns-group">
+                        <div class="m-auto">
+                            <input class="form-check-input" type="radio" name="der_resp" id="der_resp_si" onchange="showResponsible()">
+                            <label class="form-check-label" for="der_resp_si">Sí</label>
+                        </div>
+                        <div class="m-auto">
+                            <input class="form-check-input" type="radio" name="der_resp" id="der_resp_no" checked onchange="showResponsible()">
+                            <label class="form-check-label" for="der_resp_no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center d-none" id="resp_hide">
+                    <input type="file" name="resp_img" id="resp_img" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
+                    <div class="image-preview m-auto" id="imagePreview">
+                        <img src="" alt="Foto" class="image-preview__image">
+                        <span class="image-preview__default-text">Foto</span>
+                    </div>
+                    <div class="imgTxt">Foto del responsable</div>
+                    <div class="btns-group d-block remove-on-check">
+                        <label for="resp_img" class="btn mx-0">Selecciona una foto</label>
+                    </div>
+                    <div class="invalid-feedback">Seleccione una foto</div>
+                </div> 
+                <div class="row hide-on-revision">
+                    <div class="col-sm-6 m-auto">
                         <span class="input-group-text">¿Tiene cónyuge?</span>
                     </div>
                     <div id="radiobtns" class="col-sm-6 btns-group">
@@ -457,13 +486,14 @@
             <h2 class="text-center">Datos del cónyuge</h2>
             <div class="container">
                 <div class="text-center">
-                    <input type="file" name="inpFile3" id="inpFile3" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
+                    <input type="file" name="cony_img" id="cony_img" accept="image/png, image/jpeg" class="inpFile needs-validation d-none" required>
                     <div class="image-preview m-auto" id="imagePreview3">
                         <img src="" alt="Foto" class="image-preview__image">
                         <span class="image-preview__default-text">Foto</span>
                     </div>
+                    <div class="imgTxt">Foto del cónyuge</div>
                     <div class="btns-group d-block remove-on-check">
-                        <label for="inpFile3" class="btn mx-0">Selecciona una foto</label>
+                        <label for="cony_img" class="btn mx-0">Selecciona una foto</label>
                     </div>
                     <div class="invalid-feedback">Seleccione una foto</div>
                 </div> 

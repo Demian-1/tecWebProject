@@ -9,7 +9,7 @@ let formStepsNum = 0;
 
 nextBtns.forEach(btn =>{
 	btn.addEventListener("click", () => {
-		if(checkVal()){
+		if(!checkVal()){
 			if(formStepsNum == 2 && hasPartner.checked == true){
 				formStepsNum+=2;
 			}else{
@@ -36,13 +36,14 @@ prevBtns.forEach(btn =>{
 function checkVal(){
 	let errors = 0;
 	let campos = document.querySelectorAll(".form-step-active .needs-validation");
-	const regExTxt = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/g;
+	const regExTxt = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/;
 	const regExFol = /(?:P[PE]|\d\d)\d\d\d\d\d\d\d\d/i;
 	const regExCURP = /[A-Z][A-Z][A-Z][A-Z]\d\d\d\d\d\d[A-Z][A-Z][A-Z][zA-Z][A-Z][A-Z][A-Z0-9][A-Z0-9]/gi;
 	for( i = 0; i < campos.length ; i++){
 		campos[i].classList.contains("is-invalid") && campos[i].classList.remove("is-invalid");
 		if(campos[i].id.endsWith("pat") || campos[i].id.endsWith("mat") || campos[i].id.endsWith("nombres") || campos[i].id.endsWith("calle") || campos[i].id.endsWith("plaza")){
 			if(!regExTxt.test(campos[i].value)){
+				console.log(campos[i].value);
 				campos[i].classList.add("is-invalid");
 				errors++;
 			}
@@ -73,8 +74,16 @@ function checkVal(){
 			}
 		}
 		if(!campos[i].checkValidity()){
-			campos[i].classList.add("is-invalid");
-			errors++;
+			if(campos[i].id == "resp_img"){
+				if(!document.getElementById("resp_hide").classList.contains("d-none")){
+					campos[i].classList.add("is-invalid");
+					errors++;
+				}
+			}
+			else{
+				campos[i].classList.add("is-invalid");
+				errors++;
+			}
 		}
 	}
 	return errors;
@@ -192,3 +201,12 @@ inpFile.forEach(inpFile=>{
 		}
 	});
 });
+
+function showResponsible() {
+	const respAct = document.getElementById("resp_hide");
+	if(document.getElementById('der_resp_si').checked){
+		respAct.classList.remove("d-none");
+	}else{
+		respAct.classList.add("d-none");
+	}
+}

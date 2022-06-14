@@ -223,3 +223,14 @@ input[type="file"].is-invalid ~ .image-preview{
 label{
     color: gray
 }
+
+.input-group-text{
+    text-align:left;
+    word-break: break-word;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+}
+
+.imgTxt{
+    margin: 0.75rem 0;
+}
