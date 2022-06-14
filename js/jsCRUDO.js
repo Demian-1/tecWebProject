@@ -4,11 +4,8 @@ $(document).ready(
     $("#fol").hide();
     $("#table").hide();
     $("#sub").hide();
-<<<<<<< HEAD
     $("#Error").hide();
     $("#Exito").hide();
-=======
->>>>>>> de0b6169db58e213587e512c99d95d6fda30d990
 
     $( "#Tipo" ).change(function() {
         var acc= $("#Tipo").val();
@@ -34,32 +31,20 @@ $(document).ready(
                 $("#sub").show();
             break;
         }
-<<<<<<< HEAD
-=======
-        
-        alert( acc );
->>>>>>> de0b6169db58e213587e512c99d95d6fda30d990
     });
 
     $("#table").change(function(){
         $("#sub").show();
     });
 
-<<<<<<< HEAD
     $("#fol").blur(function(){
-=======
-    $("#fol").change(function(){
->>>>>>> de0b6169db58e213587e512c99d95d6fda30d990
         $("#sub").show();
     });
 
     /*$.ajax ({method:"POST", url:"CRUDR.php", cache:false, success:function(res){ $("#result").html(res)}});*/
 
     $("#accion").submit(function(e){
-<<<<<<< HEAD
         alert(a);
-=======
->>>>>>> de0b6169db58e213587e512c99d95d6fda30d990
         e.preventDefault();
         var acc= $("#Tipo").val();
         switch (acc){ 
