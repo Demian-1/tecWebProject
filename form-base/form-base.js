@@ -143,6 +143,7 @@ $(document).ready(function(){
                     //alert("agregado con exito");
                     var url="./Reporte.php?folio="+folio+"";
                     open(url);
+                    alert("Se ha enviado un correo electrónico a la dirección que registrate el cual contiene el PDF del registro");
                 }else{
                     alert("Fallo el server");
                 }
