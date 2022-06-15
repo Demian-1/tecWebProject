@@ -9,11 +9,11 @@
 	$sql = "DELETE FROM MORRO WHERE FOLIO = " . $FOLIO;
 	$result=$mysqli->query($sql); /*esta es la sentencia que borra al morro */
 	
-	//if($result){ /*no error*/
+	if($result){ /*no error*/
 	//		$sql = "SELECT FOLIO, NOM_M, APE_PAT, APE_MAT, FOTO_M FROM MORRO";
 	//		$result = $mysqli->query($sql);
 	//		if($result->num_rows > 0){ /*no error*/
-	//		$res="<center><table> <tr> <th> FOLIO </th> <th> NOMBRE </th> <th> APELLIDO PATERNO </th> <th> APELLIDO MATERNO </th><th width=20%> FOTO </th><th> ELIMINAR </th> <th> MODIFICAR </th> </tr>";
+			$res=1;
 	//		while($row = $result->fetch_assoc()) {
 	/*    	$res=$res."<tr>
 	    		<td><center> ". $row["FOLIO"]." </center></td>
@@ -25,9 +25,9 @@
 	    		<td><center><form id='modificar' method='post'><input id='fol' type='submit' name='fol' value='" . $row["FOLIO"]. "'></form></center></td>
 	    	  </tr>";
 	  		}
-	  		$res=$res."</table></center></div>";
+	  		$res=$res."</table></center></div>";*/
 		}else{ /*error*/
-	/*		$res="BD sin morros xd";
-	}*/
-	echo $results;	
+			$res=0;
+	}
+	echo $res;	
 ?>
