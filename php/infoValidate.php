@@ -4,10 +4,15 @@
     $valid=$_POST["valid"];
     if($valid == '1'){
         $folio=$_POST["folio"];
-        $sql="SELECT folio FROM MORRO where folio=$folio";
-        $result=mysqli_query($conexion, $sql);
+        $sql="SELECT folio FROM MORRO where folio='$folio'";
+        $result=$conexion->query($sql);
         if($result){
-            echo '1';
+            $row=mysqli_fetch_assoc($result);   
+            if($result->num_rows == 0){
+                echo '0';
+            }else{
+                echo '1';
+            }
         }else{
             echo '0';
         }
@@ -29,5 +34,11 @@
         $newValue = $row[0]-1;
         $sql1="UPDATE grupo SET lugares=$newValue WHERE idGRUPO=$group";
         mysqli_query($conexion,$sql1);
+    }else if($valid =='4'){
+        $documentsDate=$_POST["documentsDate"];
+        $interviewDate=$_POST["interviewDate"];
+
+        $sql="SELECT DIA_CITA FROM MORRO where dia_cita=$documentsDate";
+
     }
 ?>

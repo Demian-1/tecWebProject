@@ -426,7 +426,7 @@
         $pdf->Ln(5);
         $pdf->Cell(198,12,utf8_decode('Presentarse a la entevista el día'),0,1,'L');
         $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
-        $pdf->Cell(14,12,$datos["DIA_ENTREVISTA"],0,0,'C',1);
+        $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
         $pdf->Cell(25,12,date("m"),0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
@@ -440,7 +440,7 @@
         $pdf->SetFont('Arial','B',12);
         $pdf->Cell(198,12,utf8_decode('Presentarse a la entrega de papeles el día'),0,1,'L');
         $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
-        $pdf->Cell(14,12,$datos["DIA_CITA"],0,0,'C',1);
+        $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
         $pdf->Cell(25,12,date("m"),0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
@@ -464,7 +464,7 @@
         $pdf->Ln(5);
         $pdf->Cell(198,12,utf8_decode('Presentarse a la entrega de papeles el día'),0,1,'L');
         $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
-        $pdf->Cell(14,12,$datos["DIA_CITA"],0,0,'C',1);
+        $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
         $pdf->Cell(25,12,date("m"),0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');

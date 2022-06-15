@@ -1,136 +1,96 @@
 <?php
     
     $fol = $_POST['fol']; 
+    //echo $fol;
     $mysqli = new mysqli("localhost", "root", "", "dbtecweb");
 	if ($mysqli->connect_errno) {
-    	echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    	//echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}else{
-		echo "coneccion exitosa <br/>";
+		//echo "coneccion exitosa <br/>";
 	}
-    $sql = "SELECT * FROM MORRO where FOLIO = $fol";
+    $sql = "SELECT * FROM MORRO 
+            INNER JOIN CENDI on CENDI_idCENDI=idCENDI 
+            INNER JOIN CITAS on CITAS_idCITAS=idCITAS 
+            INNER JOIN ENTREVISTA on ENTREVISTA_idENTREVISTA=idENTREVISTA
+            INNER JOIN GRUPO on GRUPO_idGRUPO=idGRUPO
+            INNER JOIN (DERECHOHABIENTE 
+                            INNER JOIN OCUPACION on OCUPACION_ID=ID
+                            INNER JOIN ADSCRIPCION on idADS=ADSCRIPCION_idADS
+                            INNER JOIN HORARIO on idHORARIO=HORARIO_idHORARIO) on DERECHOHABIENTE.MORRO_Boleta_D=FOLIO where FOLIO = $fol";
 	$result = $mysqli->query($sql);
-	echo "modificando $fol <br/>";
-	echo $result;
+    $bipater=FALSE;
+    if($result->num_rows > 0){
+        //echo "SUCCESS";
+        while($row = $result->fetch_assoc()){
+            $data["FOLIO"]=$row["FOLIO"];
+            $data["CENDI"]=$row["idCENDI"];
+            $data["APE_PAT_M"]=$row["APE_PAT"];
+            $data["APE_MAT_M"]=$row["APE_MAT"];
+            $data["NOM_M"]=$row["NOM_M"];
+            $data["FECHAN"]=$row["FECHAN"];
+            $data["EDAD"]=$row["EDAD"];
+            $data["CURP"]=$row["CURP"];
+            $data["PADRES"]=$row["2PADRES"];
+            $data["FOTO_M"]=$row["FOTO_M"];
+            $data["GRUPO"]=$row["GRUPO_idGRUPO"];
+            //$data["CITA"]=$row["HORA"];
+            //$data["ENTREVISTAI"]=$row["INICIO"];
+            $data["ENTREVISTAF"]=$row["FIN"];
+            $data["AUTORIZADO"]=$row["FOTO_AUT"];
+            $data["APE_PAT_D"]=$row["APE_PAT_D"];
+            $data["APE_MAT_D"]=$row["APE_MAT_D"];
+            //$data["FOTO_D"]=$row["FOTO_D"];
+            $data["NOM_D"]=$row["NOM_D"];
+            $data["NUM_EXT_D"]=$row["NUM_EXT_D"];
+            $data["NUM_INT_D"]=$row["NUM_INT_D"];
+            $data["CALLE_D"]=$row["CALLE_D"];
+            $data["TELF_D"]=$row["TELF_D"];
+            $data["TELC_D"]=$row["TELC_D"];
+            $data["MAIL_D"]=$row["MAIL_D"];
+            $data["OCUPACION"]=$row["OCUPACION_ID"];
+            $data["ADSCRIPCION"]=$row["ADSCRIPCION_idADS"];
+            $data["PLAZA_D"]=$row["PLAZA_D"];
+            $data["SUELDO_D"]=$row["SUELDO_D"];
+            $data["NUMEROE_D"]=$row["NUMEROE_D"];
+            $data["NOMJEFE_D"]=$row["NOMJEFE_D"];
+            $data["CARGOJEFE_D"]=$row["CARGOJEFE_D"];
+            $data["HORARIO"]=$row["HORARIO_idHORARIO"];
+            $data["EXT_D"]=$row["EXT_D"];
+            $data["COLONIA_D"]=$row["COLONIA_D"];
+            $data["MUNICIPIO_D"]=$row["MUNICIPIO_D"];
+            $data["ESTADO_D"]=$row["ESTADO_D"];
+            $data["COLONIA_D"]=$row["COLONIA_D"];
+            $data["CP_D"]=$row["CP_D"];
+            $data["CURP_D"]=$row["CURP_D"];
+        }
+        if($data["PADRES"]==1){
+            $sql = "SELECT * FROM  CONYUGE  where MORRO_Boleta_C=$fol";
+            $result2 = $mysqli->query($sql);
+            if($result2->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $data["NOM_C"]=$row["NOM_C"];
+                    $data["APE_PAT_C"]=$row["APE_PAT_C"];
+                    $data["APE_MAT_C"]=$row["APE_MAT_C"];
+                    $data["FOTO_C"]=$row["FOTO_C"];
+                    $data["CALLE_C"]=$row["CALLE_C"];
+                    $data["NUM_INT_C"]=$row["NUM_INT_C"];
+                    $data["NUM_EXT_C"]=$row["NUM_EXT_C"];
+                    $data["LUGART_C"]=$row["LUGART_C"];
+                    $data["DOMT_C"]=$row["DOMT_C"];
+                    $data["TELT_C"]=$row["TELT_C"];
+                    $data["TELC_C"]=$row["TELC_C"];
+                    $data["RELIGION_C"]=$row["RELIGION_C"];
+                    $data["EXT_C"]=$row["EXT_C"];
+                    $data["COLONIA_C"]=$row["COLONIA_C"];
+                    $data["MUNICIPIO_C"]=$row["MUNICIPIO_C"];
+                    $data["ESTADO_C"]=$row["ESTADO_C"];
+                    $data["CP_C"]=$row["CP_C"];
+                }
+            }   
+        }
+    }else{
+        //echo "error";
+    }
+
+    echo json_encode($data);
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
-    <link rel="stylesheet" type="text/css" href="styles/formulario.css">
-    <script src="js/js.js" defer></script>
-</head>
-<body>
-    <form action="respuesta.html" class="form">
-        <h1 class="text-center">Registro 2022-2023</h1>
-            <!-- Barra de progreso -->
-            <div class="progressbar">
-                <div class="progress" id="progress"></div>  
-                <div class="progress-step progress-step-active" data-title="Básico"></div>
-                <div class="progress-step" data-title="Niña/Niño"></div>
-                <div class="progress-step" data-title="Derechohabiente"></div>
-                <div class="progress-step" data-title="Cónyuge"></div>
-            </div>
-            <!-- Forms -->
-        <div class="form-step form-step-active">
-            <h2 class="text-center">Datos basicos</h2>
-            <input type="text" name="ciclo_escolar" id="ciclo_escolar" value="2022-2023" disabled="true">
-            <select name="CENDI" id="CENDI">
-                <option selected disabled>CENDI</option>
-                <option value="Cardenas">CENDI Amalia Solórzano de Cárdenas</option>
-                <option value="Bassols">CENDI Clementina Batalla de Bassols</option>
-                <option value="LopezMateos">CENDI Eva Sámano de López Mateos</option>
-                <option value="Batiz">CENDI Laura Pérez de Bátiz</option>
-                <option value="Erro">CENDI Margarita Salazar de Erro</option>
-            </select>
-            <label for="foto">Foto</label>
-            <input id="foto" name="foto" type="file">
-            <input type="number" name="folio" id="folio" placeholder="Folio">
-            <input type="text" name="grupo" id="grupo" placeholder="Grupo">
-            <a href="#" class="btn btn-nxt width-50 ml-auto" id="test2">Siguiente</a>
-        </div>
-        <div class="form-step" id="test">
-            <h2 class="text-center">Datos del niño o de la niña</h2>  
-            <input type="text" name="kid_apellido_pat" id="kid_apellido_pat" placeholder="Apellido paterno">
-            <input type="text" name="kid_apellido_mat" id="kid_apellido_mat" placeholder="Apellido materno">
-            <input type="text" name="kid_nombres" id="kid_nombres" placeholder="Nombre(s)">
-            <label for="kid_birthday">Fecha de nacimiento</label>
-            <input type="date" name="kid_birthday" id="kid_birthday" onblur="calcularEdad()">
-            <input type="number" name="kid_age" id="kid_age" disabled="true" placeholder="Edad">
-            <input type="text" name="kid_CURP" id="kid_CURP" placeholder="CURP">
-            <div class="btns-group">
-                <a href="#" class="btn btn-prev">Anterior</a>
-                <a href="#" class="btn btn-nxt">Siguiente</a>
-            </div>
-        </div>
-        <div class="form-step">
-            <h2 class="text-center">Datos del o la derechohabiente</h2>  
-            <input type="text" name="der_apellido_pat" id="der_apellido_pat" placeholder="Apellido paterno" >
-            <input type="text" name="der_apellido_mat" id="der_apellido_mat" placeholder="Apellido materno" >
-            <label></label>
-            <input type="text" name="der_nombres" id="der_nombres" placeholder="Nombre(s)" >
-            <div id="der_domicilio">
-                <input type="number" name="der_cp" id="der_cp" / placeholder="Código postal">
-                <input type="text" name="der_entidad" id="der_entidad" placeholder="Entidad" disabled > <!-- Aqui se pondran automaticamente en base al CP -->
-                <input type="text" name="der_alcaldia" id="der_alcaldia" placeholder="Alcaldia" disabled>
-                <input type="text" name="der_colonia" id="der_colonia" placeholder="Colonia" disabled >
-                <input type="text" name="der_calle" id="der_calle" placeholder="Calle" />
-                <input type="number" name="der_numExt" id="der_numExt" placeholder="Número exterior">
-                <input type="number" name="der_numInt" id="der_numInt" placeholder="Número interior">
-                <input type="tel" name="der_tel_fijo" id="der_tel_fijo" placeholder="Número telefónico fijo">
-                <input type="tel" name="der_tel_celular" id="der_tel_celular" placeholder="Número celular">
-            </div>
-            <input type="email" name="der_email" id="der_email" placeholder="Correo electrónico">
-            <select name="der_opcupacion" id="der_ocupacion">
-                <option selected disabled>Ocupacion</option>
-                <option value="der_docente">Docente</option>
-                <option value="der_PAAE">PAEE</option>
-                <option value="der_funcionari">Funcionario(a)</option>
-            </select>
-            <input type="text" name="der_CURP" id="der_CURP" placeholder="CURP">
-            <input type="text" name="der_plaza" id="der_plaza" placeholder="Nombre de la plaza o puesto">
-            <input type="number" name="der_sueldo" id="der_sueldo" placeholder="Sueldo (MXN)">
-            <input type="text" name="der_numEmpleado" id="der_numEmpleado" placeholder="Número de empleado">
-            <div id="der_horario">
-                <label for="der_horario_inicio">Entrada: </label>
-                <input type="time" name="der_horario_inicio" id="der_horario_inicio">
-                <label for="der_horario_fin">Salida: </label>
-                <input type="time" name="der_horario_fin" id="der_horario_fin">
-            </div>
-            <input type="number" name="der_extension" id="der_extension" placeholder="Extension">
-            <div class="btns-group">
-                <a href="#" class="btn btn-prev">Anterior</a>
-                <a href="#" class="btn btn-nxt">Siguiente</a>
-            </div>
-        </div>
-        <div class="form-step">
-            <h2 class="text-center">Datos del cónyuge</h2>  
-            <input type="text" name="cony_apellido_pat" id="cony_apellido_pat" placeholder="Apellido paterno">
-            <input type="text" name="cony_apellido_mat" id="cony_apellido_mat" placeholder="Apellido materno">
-            <input type="text" name="cony_nombres" id="cony_nombres" placeholder="Nombre(s)">
-            <div id="cony_domicilio">
-                <p>Domicilio:</p>
-                <input type="number" name="cony_cp" id="cony_cp" placeholder="Código postal">
-                <input type="text" name="cony_entidad" id="cony_entidad" placeholder="Entidad" disabled="true">
-                <input type="text" name="cony_alcaldia" id="cony_alcaldia" placeholder="Alcaldia/Municipio" disabled="true">
-                <input type="text" name="cony_colonia" id="cony_colonia" placeholder="Colonia" disabled="true">
-                <input type="text" name="cony_calle" id="cony_calle" placeholder="Calle" disabled="true" />
-                <input type="number" name="cony_numExt" id="cony_numExt" placeholder="Número exterior">
-                <input type="number" name="cony_numInt" id="cony_numInt" placeholder="Número interior">
-                <input type="tel" name="cony_tel_fijo" id="cony_tel_fijo" placeholder="55-1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}">
-                <input type="tel" name="cony_tel_celular" id="cony_tel_celular" placeholder="55-1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}">
-            </div>
-            <input type="text" name="cony_lugar_trabajo" id="cony_lugar_trabajo" placeholder="Lugar de Trabajo">
-            <input type="text" name="cony_domicilio_trabajo" id="cony_domicilio_trabajo" placeholder="Domicilio de trabajo">
-            <input type="tel" name="cony_tel_trabajo" id="cony_tel_trabajo" placeholder="55-1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}">
-            <input type="tel" name="cony_tel_trabajo_ext" id="cony_tel_trabajo_ext" placeholder="1234" pattern="[0-9]{4}">
-            <div class="btns-group">
-                <a href="#" class="btn btn-prev">Anterior</a>
-                <input type="submit" value="Finalizar" class="btn">
-            </div>
-        </div>
-     </form>
-</body>
-</html>
