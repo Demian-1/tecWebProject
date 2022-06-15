@@ -103,7 +103,24 @@ $(document).ready(function(){
             der_jefe:der_jefe,
             der_jefe_puesto:der_jefe_puesto,
             der_horario:der_horario,
-            der_extension:der_extension
+            der_extension:der_extension,//
+                //
+            cony_apellido_pat:cony_apellido_pat,
+            cony_apellido_mat:cony_apellido_mat,
+            cony_nombres:cony_nombres,
+            cony_cp:cony_cp,
+            cony_entidad:cony_entidad,
+            cony_alcaldia:cony_alcaldia,
+            cony_colonia:cony_colonia,
+            cony_calle:cony_calle,
+            cony_numExt:cony_numExt,
+            cony_numInt:cony_numInt,
+            cony_tel_fijo:cony_tel_fijo,
+            cony_tel_celular:cony_tel_celular,
+            cony_lugar_trabajo:cony_lugar_trabajo,
+            cony_domicilio_trabajo:cony_domicilio_trabajo,
+            cony_tel_trabajo:cony_tel_trabajo,
+            cony_extension:cony_extension
         },
             cache:false, //evitamos que la página del servidor se almacene en la cache del navegador
             success:function(r){ //cuando el servidor de la respuesta ¿qué haremos con ella?
