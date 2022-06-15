@@ -5,7 +5,7 @@ $(document).ready(function(){
         e.preventDefault();
         var folio = $("#folio").val();
         var cendi = $("#CENDI").val();
-        // var img_niño     <---- Para el Ascencio
+        var kid_img = folio+"_0.png";
         var kid_apellido_pat = $("#kid_apellido_pat").val();
         var kid_apellido_mat = $("#kid_apellido_mat").val();
         var kid_nombres = $("#kid_nombres").val();
@@ -17,9 +17,11 @@ $(document).ready(function(){
         var kid_cita = 1;
         var kid_entrevista = 1;
         var kid_grupo = $("#grupo").val();
+        var resp_img = folio+"_2.png";
 
         // Datos del derechohabiente
 
+        var der_img = folio+"_1.png";
         var der_apellido_pat = $("#der_apellido_pat").val();
         var der_apellido_mat = $("#der_apellido_mat").val();
         var der_nombres = $("#der_nombres").val();
@@ -46,6 +48,7 @@ $(document).ready(function(){
 
         // Datos del conyuge
 
+        var cony_img = folio+"_3.png";
         var cony_apellido_pat = $("#cony_apellido_pat").val();
         var cony_apellido_mat = $("#cony_apellido_mat").val();
         var cony_nombres = $("#cony_nombres").val();
@@ -63,10 +66,7 @@ $(document).ready(function(){
         var cony_tel_trabajo = $("#cony_tel_trabajo").val();
         var cony_extension = $("#cony_extension").val();
         var cony_si = $("#der_cony_si").val();
-        var cony_curp = $("#cony_curp").val();
         var cony_religion = $("#cony_religion").val();
-
-        alert(cony_curp);
 
         alert(folio+" "+cendi+" "+kid_apellido_pat+" "+kid_apellido_mat+" "+kid_nombres+" "+kid_birthday+" "+kid_age+" "+kid_CURP+" "+kid_foto+" "+kid_dos_padres+" "+kid_cita+" "+kid_entrevista+" "+kid_grupo);
         $.ajax ({
@@ -74,6 +74,7 @@ $(document).ready(function(){
             url:"./form-base/form-base.php", //similar al atributo 'action' de la etiqueta FORM
             data:{folio:folio,
             cendi:cendi,
+            kid_img:kid_img,
             kid_apellido_pat:kid_apellido_pat,
             kid_apellido_mat:kid_apellido_mat,
             kid_nombres:kid_nombres,
@@ -84,8 +85,10 @@ $(document).ready(function(){
             kid_dos_padres:kid_dos_padres,
             kid_cita:kid_cita,
             kid_entrevista:kid_entrevista,
-            kid_grupo:kid_grupo,//
+            kid_grupo:kid_grupo,
+            resp_img:resp_img,//
             //
+            der_img:der_img,
             der_apellido_pat:der_apellido_pat,
             der_apellido_mat:der_apellido_mat,
             der_nombres:der_nombres,
@@ -110,6 +113,7 @@ $(document).ready(function(){
             der_horario:der_horario,
             der_extension:der_extension,//
                 //
+            cony_img:cony_img,
             cony_apellido_pat:cony_apellido_pat,
             cony_apellido_mat:cony_apellido_mat,
             cony_nombres:cony_nombres,
@@ -127,7 +131,6 @@ $(document).ready(function(){
             cony_tel_trabajo:cony_tel_trabajo,
             cony_extension:cony_extension,
             cony_si:cony_si,
-            cony_curp:cony_curp,
             cony_religion:cony_religion
         },
             cache:false, //evitamos que la página del servidor se almacene en la cache del navegador
