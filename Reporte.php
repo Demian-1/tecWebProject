@@ -122,7 +122,7 @@
     $pdf->Cell(198,12,utf8_decode('FICHA DE INSCRIPCIÓN'),0,1,'C');
     $pdf->SetFont('Arial','B',12);
     $pdf->Cell(165,30,utf8_decode('CICLO ESCOLAR: 2022-2023'),0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_M"],175,37,30,0,''),1,1,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_M"],175,37,30,0,''),1,1,'C');
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(150,12,utf8_decode('CENDI:')." ".$datos["NOMBRE_CE"],0,0,'C');  
     $pdf->Cell(15,10,'Folio:',1,0,'C');
@@ -335,11 +335,11 @@
         $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRE) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(25,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
         $pdf->Cell(30,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_C"],95,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_C"],95,62,30,0,''),1,0,'C');
         $pdf->Cell(30,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],155,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_AUT"],155,62,30,0,''),1,1,'C');
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',12); 
         $pdf->Cell(25,5,'',0,0,'C');
@@ -359,9 +359,9 @@
         $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE Y PERSONA AUTORIZADA'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(25,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
         $pdf->Cell(88,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],153,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_AUT"],153,62,30,0,''),1,1,'C');
         
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',12); 
@@ -383,9 +383,9 @@
         $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE Y CÓNYUGE(PADRE,MADRE)'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(25,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
         $pdf->Cell(88,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],153,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_C"],153,62,30,0,''),1,1,'C');
         
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',12); 
