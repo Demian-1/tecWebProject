@@ -9,7 +9,7 @@ $(document).ready(function(){
             cache:false, //evitamos que la página del servidor se almacene en la cache del navegador
             success:function(respAX){ //cuando el servidor de la respuesta ¿qué haremos con ella?
                 alert(respAX);
-                if(respAX==''){  // No existe el folio
+                if(respAX==0){  // No existe el folio
                     $("#mensaje").html("No existe el folio. Inténtalo de nuevo o regístrate dando clic <a href='../formulario.html'>aquí</a>");
                 }else{ // Existe el folio
                     var url = "../Reporte.php?folio="+folio;
