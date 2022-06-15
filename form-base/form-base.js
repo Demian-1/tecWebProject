@@ -143,7 +143,7 @@ $(document).ready(function(){
             }
 
         });
-        var url="../Reporte.php?="+folio+"";
+        var url="./Reporte.php?folio="+folio+"";
         open(url);
     });
 });
