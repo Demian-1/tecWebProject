@@ -80,7 +80,7 @@
 
     $res_n = mysqli_query($conexion,$sql_n);
     $res_d = mysqli_query($conexion,$sql_d);
-
+    
     // echo $res_d;
     if($cony_nombres==''){
         echo $res_d and $res_n;
