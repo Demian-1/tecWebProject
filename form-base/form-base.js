@@ -28,6 +28,19 @@ $(document).ready(function(){
         var der_alcaldia = $("#der_alcaldia").val();
         var der_colonia = $("#der_colonia").val();
         var der_calle = $("#der_calle").val();
+        var der_numExt = $("#der_numExt").val();
+        var der_numInt = $("#der_numInt").val();
+        var der_tel_fijo = $("#der_tel_fijo").val();
+        var der_tel_celular = $("#der_tel_celular").val();
+        var der_email = $("#der_email").val();
+        var der_CURP = $("#der_CURP").val();
+        var der_ocupacion = $("#der_ocupacion").val();
+        var der_plaza = $("#der_plaza").val();
+        var der_sueldo = $("#der_sueldo").val();
+        var der_numEmpleado = $("#der_numEmpleado").val();
+        var der_adscripcion = $("#der_adscripcion").val();
+        var der_horario = $("#der_horario").val();
+        var der_extension = $("#der_extension").val();
         alert(folio+" "+cendi+" "+kid_apellido_pat+" "+kid_apellido_mat+" "+kid_nombres+" "+kid_birthday+" "+kid_age+" "+kid_CURP+" "+kid_foto+" "+kid_dos_padres+" "+kid_cita+" "+kid_entrevista+" "+kid_grupo);
         $.ajax ({
             method:"POST", //similar al atributo 'method' de la etiqueta FORM
