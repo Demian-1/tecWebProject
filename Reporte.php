@@ -218,7 +218,9 @@
     $pdf->Cell(132,5,utf8_decode('Horario de trabajo'),1,0,'C',0); 
     $pdf->Cell(66,5,utf8_decode('Extensión'),1,1,'C',0);
     //FIn derechohabiente
-    // INICIO CONYUGE
+
+    if($datos["2PADRES"]==1){// VAlidacion si hay o no conyuge
+        // INICIO CONYUGE
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(66,7,utf8_decode('DATOS DEL CÓNYUGE(PADRE,MADRE):'),0,1,'L'); 
     $pdf->SetFont('Arial','B',10); 
@@ -270,11 +272,67 @@
     $pdf->Cell(99,5,utf8_decode('Teléfono de Trabajo'),1,0,'C',0); 
     $pdf->Cell(33,5,utf8_decode('Extensión'),1,0,'C',0);
     $pdf->Cell(66,5,utf8_decode('Religión'),1,1,'C',0);
-    if($datos["AUT_D"]==1){
+
+    }else{  // SI no hay conyuge
+        // INICIO CONYUGE
+    $pdf->SetFont('Arial','B',10);
+    $pdf->Cell(66,7,utf8_decode('DATOS DEL CÓNYUGE(PADRE,MADRE):'),0,1,'L'); 
+    $pdf->SetFont('Arial','B',10); 
+    $pdf->Cell(66,5,"",1,0,'C',1); 
+    $pdf->Cell(66,5,"",1,0,'C',1); 
+    $pdf->Cell(66,5,"",1,1,'C',1);  
+    $pdf->SetFont('Arial','',10); 
+    $pdf->Cell(66,5,'Primer Apellido',1,0,'C',0); 
+    $pdf->Cell(66,5,'Segundo Apellido',1,0,'C',0); 
+    $pdf->Cell(66,5,'Nombre(s)',1,1,'C',0);
+     
+    $pdf->SetFont('Arial','B',10);
+    $pdf->Cell(33,5,"",1,0,'C',1); 
+    $pdf->Cell(33,5,"",1,0,'C',1); 
+    $pdf->Cell(33,5,"",1,0,'C',1); 
+    $pdf->Cell(33,5,"",1,0,'C',1); 
+    $pdf->Cell(66,5,"",1,1,'C',1); 
+    $pdf->SetFont('Arial','',10); 
+    $pdf->Cell(33,5,'C.P.',1,0,'C',0); 
+    $pdf->Cell(33,5,'Entidad',1,0,'C',0); 
+    $pdf->Cell(33,5,'Alcaldia',1,0,'C',0);
+    $pdf->Cell(33,5,'Colonia',1,0,'C',0); 
+    $pdf->Cell(66,5,'Calle',1,1,'C',0);
+
+    $pdf->SetFont('Arial','B',10); 
+    $pdf->Cell(33,5,"",1,0,'C',1); 
+    $pdf->Cell(33,5,"",1,0,'C',1); 
+    $pdf->Cell(66,5,"",1,0,'C',1); 
+    $pdf->Cell(66,5,"",1,1,'C',1); 
+    $pdf->SetFont('Arial','',10);
+    $pdf->Cell(33,5,utf8_decode('N°Ext.'),1,0,'C',0); 
+    $pdf->Cell(33,5,utf8_decode('N°int.'),1,0,'C',0);
+    $pdf->Cell(66,5,utf8_decode('Teléfono Fijo'),1,0,'C',0); 
+    $pdf->Cell(66,5,utf8_decode('Teléfono Celular'),1,1,'C',0);
+
+    $pdf->SetFont('Arial','B',10); 
+    $pdf->Cell(198,5,"",1,1,'C',1);
+    $pdf->SetFont('Arial','',10);
+    $pdf->Cell(198,5,'Lugar de Trabajo:',1,1,'C',0);
+    $pdf->SetFont('Arial','B',10);  
+    $pdf->Cell(198,5,"",1,1,'C',1); 
+    $pdf->SetFont('Arial','',10);
+    $pdf->Cell(198,5,'Domicilio de Trabajo:',1,1,'C',0);
+    $pdf->SetFont('Arial','B',10); 
+    $pdf->Cell(99,5,"",1,0,'C',1); 
+    $pdf->Cell(33,5,"",1,0,'C',1);
+    $pdf->Cell(66,5,"",1,1,'C',1);  
+    $pdf->SetFont('Arial','',10);
+    $pdf->Cell(99,5,utf8_decode('Teléfono de Trabajo'),1,0,'C',0); 
+    $pdf->Cell(33,5,utf8_decode('Extensión'),1,0,'C',0);
+    $pdf->Cell(66,5,utf8_decode('Religión'),1,1,'C',0);
+    }
+    
+    if($datos["AUT_D"]==1 && $datos["2PADRES"]==1){
         $pdf->AddPage('P','letter',0);
         $pdf->SetFont('Arial','B',8);
         $pdf->Ln(30);
-        $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRES) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
+        $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRE) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(25,30,'',0,0,'C');
         $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
@@ -293,8 +351,32 @@
         $pdf->Cell(25,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
+        
+    }else if($datos["AUT_D"]==1 && $datos["2PADRES"]==0){
+        $pdf->AddPage('P','letter',0);
+        $pdf->SetFont('Arial','B',8);
+        $pdf->Ln(30);
+        $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE Y PERSONA AUTORIZADA'),0,1,'C');
         $pdf->Ln(10);
-    }else{
+        $pdf->Cell(25,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(88,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],153,62,30,0,''),1,1,'C');
+        
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial','B',12); 
+        $pdf->Cell(25,5,'',0,0,'C');
+        $pdf->Cell(30,5,'DERECHOHABIENTE',0,0,'C');
+        $pdf->Cell(88,5,'',0,0,'C');
+        $pdf->Cell(30,5,utf8_decode('PERSONA RESPONSABLE'),0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        
+        $pdf->Cell(25,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+       
+    }else if($datos["AUT_D"]==0 && $datos["2PADRES"]==1){
+
         $pdf->AddPage('P','letter',0);
         $pdf->SetFont('Arial','B',8);
         $pdf->Ln(30);
@@ -303,28 +385,48 @@
         $pdf->Cell(25,30,'',0,0,'C');
         $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
         $pdf->Cell(88,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_C"],153,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],153,62,30,0,''),1,1,'C');
         
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',12); 
         $pdf->Cell(25,5,'',0,0,'C');
         $pdf->Cell(30,5,'DERECHOHABIENTE',0,0,'C');
         $pdf->Cell(88,5,'',0,0,'C');
-        $pdf->Cell(30,5,utf8_decode('CÓNYUGE'),0,0,'C');
+        $pdf->Cell(30,5,utf8_decode('CONYUGE'),0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
         
         $pdf->Cell(25,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
+    }else if($datos["AUT_D"]==0 && $datos["2PADRES"]==0){
+        $pdf->AddPage('P','letter',0);
+        $pdf->SetFont('Arial','B',8);
+        $pdf->Ln(30);
+        $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍA DEL O LA DERECHOHABIENTE'),0,1,'C');
         $pdf->Ln(10);
+        $pdf->Cell(84,30,'',0,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],94,62,30,0,''),1,1,'C');
+        
+        
+        $pdf->Ln(5);
+        $pdf->SetFont('Arial','B',12); 
+        $pdf->Cell(84,5,'',0,0,'C');
+        $pdf->Cell(30,5,'DERECHOHABIENTE',0,0,'C');
+       
+        
+        
+        $pdf->Cell(25,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
+        $pdf->Cell(30,5,'',0,0,'C');
     }
     
     if($datos["GRUPO_idGRUPO"]==1){
 
         $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(198,12,utf8_decode('Presentarse a la entevista y entrega de papeles el día'),0,1,'L');
+        $pdf->Ln(5);
+        $pdf->Cell(198,12,utf8_decode('Presentarse a la entevista el día'),0,1,'L');
         $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
-        $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
+        $pdf->Cell(14,12,$datos["DIA_ENTREVISTA"],0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
         $pdf->Cell(25,12,date("m"),0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
@@ -333,8 +435,22 @@
         $pdf->Cell(66,12,'',0,0,'C',0);
         $pdf->Cell(66,12,utf8_decode("Inicio: ".$datos["INICIO"]." Fin ".$datos["FIN"]),0,0,'C',1);
         $pdf->Cell(66,12,'Hrs.',0,1,'L',0);
-        $pdf->Ln(10);
+        
+        
         $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(198,12,utf8_decode('Presentarse a la entrega de papeles el día'),0,1,'L');
+        $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
+        $pdf->Cell(14,12,$datos["DIA_CITA"],0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("m"),0,0,'C',1);
+        $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
+        $pdf->Cell(25,12,date("Y"),0,1,'C',1);
+        $pdf->Cell(198,12,utf8_decode('A las:'),0,1,'L');
+        $pdf->Cell(66,12,'',0,0,'C',0);
+        $pdf->Cell(66,12,utf8_decode($datos["HORA"]),0,0,'C',1);
+        $pdf->Cell(66,12,'Hrs.',0,1,'L',0);
+        $pdf->SetFont('Arial','B',12);
+
         $pdf->Cell(198,12,utf8_decode('Expedido el día:'),0,1,'L');
         $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
         $pdf->Cell(14,12,date("d"),0,0,'C',1);
@@ -345,16 +461,17 @@
         
     }else{
         $pdf->SetFont('Arial','B',12);
+        $pdf->Ln(5);
         $pdf->Cell(198,12,utf8_decode('Presentarse a la entrega de papeles el día'),0,1,'L');
         $pdf->Cell(66,12,utf8_decode('Ciudad de México a '),0,0,'R');
-        $pdf->Cell(14,12,date("d")+1,0,0,'C',1);
+        $pdf->Cell(14,12,$datos["DIA_CITA"],0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
         $pdf->Cell(25,12,date("m"),0,0,'C',1);
         $pdf->Cell(15,12,utf8_decode('de'),0,0,'C');
         $pdf->Cell(25,12,date("Y"),0,1,'C',1);
         $pdf->Cell(198,12,utf8_decode('A las:'),0,1,'L');
         $pdf->Cell(66,12,'',0,0,'C',0);
-        $pdf->Cell(66,12,utf8_decode("Inicio: ".$datos["INICIO"]." Fin ".$datos["FIN"]),0,0,'C',1);
+        $pdf->Cell(66,12,utf8_decode(utf8_decode($datos["HORA"])),0,0,'C',1);
         $pdf->Cell(66,12,'Hrs.',0,1,'L',0);
         $pdf->Ln(10);
         $pdf->SetFont('Arial','B',12);
@@ -369,7 +486,7 @@
     }
     
     
-    $pdf->Ln(10);
+   
     $pdf->Cell(66,12,'',0,0,'C',0);
     $pdf->Cell(66,12,'',0,1,'C',0);
     $pdf->Cell(66,12,'',0,0,'C',0);
