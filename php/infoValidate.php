@@ -21,7 +21,13 @@
         }else{
             echo '0';
         }
-    }else if($valid == '3'){
-        
+    }else if($valid == '3'){ // Decrementa lugares en la BD
+        $group=$_POST["group"];
+        $sql="SELECT LUGARES FROM grupo where idGRUPO=$group";
+        $result=mysqli_query($conexion,$sql);
+        $row = mysqli_fetch_row($result);
+        $newValue = $row[0]-1;
+        $sql1="UPDATE grupo SET lugares=$newValue WHERE idGRUPO=$group";
+        mysqli_query($conexion,$sql1);
     }
 ?>

@@ -257,7 +257,6 @@ function checkAvailability(){
 		async: false,
 
 		success:function(respAX){
-			console.log(respAX);
 			if(respAX == 0 ) flag = false;
 		}
 	});
@@ -307,4 +306,19 @@ function submitImages(){
 
 		});
 	}
+
+	decrementAvailability();
+}
+
+function decrementAvailability(){
+	$.ajax({
+		url:"php/infoValidate.php",
+		method: "POST",
+		data: {group:chosenGroup.value,valid:3}, 
+		async: false,
+
+		success:function(respAX){
+			if(respAX == 0 ) flag = false;
+		}
+	});
 }
