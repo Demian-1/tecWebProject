@@ -1,4 +1,4 @@
-alert("hola");
+// alert("hola");
 
 $(document).ready(function(){
     $("#formulario-prin").submit(function(e){
@@ -68,7 +68,7 @@ $(document).ready(function(){
         var cony_si = $("#der_cony_si").val();
         var cony_religion = $("#cony_religion").val();
 
-        alert(folio+" "+cendi+" "+kid_apellido_pat+" "+kid_apellido_mat+" "+kid_nombres+" "+kid_birthday+" "+kid_age+" "+kid_CURP+" "+kid_foto+" "+kid_dos_padres+" "+kid_cita+" "+kid_entrevista+" "+kid_grupo);
+        // alert(folio+" "+cendi+" "+kid_apellido_pat+" "+kid_apellido_mat+" "+kid_nombres+" "+kid_birthday+" "+kid_age+" "+kid_CURP+" "+kid_foto+" "+kid_dos_padres+" "+kid_cita+" "+kid_entrevista+" "+kid_grupo);
         $.ajax ({
             method:"POST", //similar al atributo 'method' de la etiqueta FORM
             url:"./form-base/form-base.php", //similar al atributo 'action' de la etiqueta FORM

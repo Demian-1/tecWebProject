@@ -6,7 +6,7 @@
         $folio=$_POST["folio"];
         $sql="SELECT folio FROM MORRO where folio=$folio";
         $result=mysqli_query($conexion, $sql);
-        if(mysqli_num_rows($result) > 0){
+        if($result){
             echo '1';
         }else{
             echo '0';
