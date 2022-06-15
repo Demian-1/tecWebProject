@@ -2,33 +2,7 @@
 
 $(document).ready(function(){
     $("#formulario-prin").submit(function(e){
-        e.preventDefault();
-
-        var currDate = new Date().getDate();
-        var interviewDate;
-        var kid_dia_entrevista;
-
-        var documentsDate = currDate + 1;
-        if(document.getElementById("grupo").value == 1){
-            interviewDate = currDate + 1;
-        }else{
-            kid_dia_entrevista = null;
-        }
-
-        $.ajax({
-            url:"php/infoValidate.php",
-            method: "POST",
-            data: {documentsDate:documentsDate,interviewDate:interviewDate,valid:4}, 
-            async: false,
-
-            success:function(respAX){
-                if(respAX == 0 ) flag = false;
-            }
-        });
-
-        if(document.getElementById("grupo").value == 1) kid_dia_entrevista = interviewDate;
-        var kid_dia_documentos = documentsDate;
-        
+        e.preventDefault();       
 
         var folio = $("#folio").val();
         var cendi = $("#CENDI").val();
@@ -39,8 +13,12 @@ $(document).ready(function(){
         var kid_birthday = $("#kid_birthday").val();
         var kid_age = $("#kid_age").val();
         var kid_CURP = $("#kid_CURP").val();
-        var kid_foto = 'default.png';
-        var kid_dos_padres = true;
+        var kid_dos_padres;
+        if(document.getElementById("der_cony_si").checked){
+            kid_dos_padres = 1;
+        }else{
+            kid_dos_padres = 0;
+        }
         var kid_cita = 1;
         var kid_entrevista = 1;
         var kid_grupo = $("#grupo").val();
@@ -108,7 +86,6 @@ $(document).ready(function(){
             kid_birthday:kid_birthday,
             kid_age:kid_age,
             kid_CURP:kid_CURP,
-            kid_foto:kid_foto,
             kid_dos_padres:kid_dos_padres,
             kid_cita:kid_cita,
             kid_entrevista:kid_entrevista,
@@ -163,14 +140,15 @@ $(document).ready(function(){
             cache:false, //evitamos que la página del servidor se almacene en la cache del navegador
             success:function(r){ //cuando el servidor de la respuesta ¿qué haremos con ella?
                 if(r==1){
-                    alert("agregado con exito");
+                    //alert("agregado con exito");
+                    var url="./Reporte.php?folio="+folio+"";
+                    open(url);
                 }else{
                     alert("Fallo el server");
                 }
             }
 
         });
-        var url="./Reporte.php?folio="+folio+"";
-        open(url);
+        
     });
 });

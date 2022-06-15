@@ -122,7 +122,7 @@
     $pdf->Cell(198,12,utf8_decode('FICHA DE INSCRIPCIÓN'),0,1,'C');
     $pdf->SetFont('Arial','B',12);
     $pdf->Cell(165,30,utf8_decode('CICLO ESCOLAR: 2022-2023'),0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('./img/customerImages/'.$datos["FOTO_M"],175,37,30,0,''),1,1,'C');
+    $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_M"],175,37,30,0,''),1,1,'C');
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(150,12,utf8_decode('CENDI:')." ".$datos["NOMBRE_CE"],0,0,'C');  
     $pdf->Cell(15,10,'Folio:',1,0,'C');
@@ -492,8 +492,9 @@
     $pdf->Cell(66,12,'',0,0,'C',0);
     $pdf->Cell(66,12,utf8_decode($datos["APE_PAT_D"])." ".utf8_decode($datos["APE_MAT_D"])." ".utf8_decode($datos["NOM_D"]),'B',1,'C',0);
 
-    $pdf->Cell(66,12,'',0,0,'C',0);
-    $pdf->Cell(66,12,'Nombre y Firma del derechohabiente',0,1,'C',0);
+    $pdf->Cell(66,8,'',0,0,'C',0);
+    $pdf->SetFont('Arial','',10);
+    $pdf->Cell(66,8,'Nombre y Firma del derechohabiente',0,1,'C',0);
 
     $pdf->AliasNbPages();
     $pdf->Output('I','Ficha_de_inscripcion.pdf');
