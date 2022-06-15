@@ -44,6 +44,25 @@
     $der_horario=$_POST['der_horario'];
     $der_extension=$_POST['der_extension'];
 
+    // Conyuge Datos
+
+    $cony_apellido_pat=$_POST['cony_apellido_pat'];
+    $cony_apellido_mat=$_POST['cony_apellido_mat'];
+    $cony_nombres=$_POST['cony_nombres'];
+    $cony_cp=$_POST['cony_cp'];
+    $cony_entidad=$_POST['cony_entidad'];
+    $cony_alcaldia=$_POST['cony_alcaldia'];
+    $cony_colonia=$_POST['cony_colonia'];
+    $cony_calle=$_POST['cony_calle'];
+    $cony_numExt=$_POST['cony_numExt'];
+    $cony_numInt=$_POST['cony_numInt'];
+    $cony_tel_fijo=$_POST['cony_tel_fijo'];
+    $cony_tel_celular=$_POST['cony_tel_celular'];
+    $cony_lugar_trabajo=$_POST['cony_lugar_trabajo'];
+    $cony_domicilio_trabajo=$_POST['cony_domicilio_trabajo'];
+    $cony_tel_trabajo=$_POST['cony_tel_trabajo'];
+    $cony_extension=$_POST['cony_extension'];
+
     $sql_n="INSERT INTO `DBTECWEB`.`MORRO` (`FOLIO`, `CENDI_idCENDI`, `APE_PAT`, `APE_MAT`, `NOM_M`, `FECHAN`, `EDAD`, `CURP`, `FOTO_M`, `2PADRES`, `CITAS_idCITAS`, `ENTREVISTA_idENTREVISTA`, `GRUPO_idGRUPO`) VALUES ('$folio', '$cendi', '$kid_apellido_pat', '$kid_apellido_mat', '$kid_nombres', '$kid_birthday', '$kid_age', '$kid_CURP', '$kid_foto', '$kid_dos_padres', '$kid_cita', '$kid_entrevista', '$kid_grupo')";
     $sql_d="INSERT INTO `DBTECWEB`.`DERECHOHABIENTE` (`MORRO_Boleta_D`, `APE_PAT_D`, `APE_MAT_D`,`FOTO_D`, `NOM_D`,`AUT_D`,`FOTOA_D`, `NUM_EXT_D`, `NUM_INT_D`, `CALLE_D`, `TELF_D`, `TELC_D`, `MAIL_D`, `OCUPACION_ID`, `CURP_D`, `PLAZA_D`, `SUELDO_D`, `NUMEROE_D`, `ADSCRIPCION_idADS`, `NOMJEFE_D`, `CARGOJEFE_D`, `HORARIO_idHORARIO`, `EXT_D`, `COLONIA_D`, `MUNICIPIO_D`, `ESTADO_D`, `CP_D`) VALUES ('$folio', '$der_apellido_pat', '$der_apellido_mat','default.png', '$der_nombres',1,'default.png','$der_numExt','$der_numInt', '$der_calle', '$der_tel_fijo', '$der_tel_celular', '$der_email', '$der_ocupacion', '$der_CURP', '$der_plaza', '$der_sueldo', '$der_numEmpleado', '$der_adscripcion', '$der_jefe', '$der_jefe_puesto', '$der_horario', '$der_extension', '$der_colonia', '$der_alcaldia', '$der_entidad', '$der_cp')";
 
