@@ -318,8 +318,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `DBTECWEB`;
-INSERT INTO `DBTECWEB`.`MORRO` (`FOLIO`, `CENDI_idCENDI`, `APE_PAT`, `APE_MAT`, `NOM_M`, `FECHAN`, `EDAD`, `CURP`, `FOTO_M`, `2PADRES`, `CITAS_idCITAS`, `ENTREVISTA_idENTREVISTA`, `GRUPO_idGRUPO`) VALUES ('2022010001', 1, 'DE', 'PRUEBA', 'MORRO', '01/01/2021', '1 ANO 4 MESES', 'DEPM210101HDFTGTA0', 'default.png', true, 1, 1, 1);
-INSERT INTO `DBTECWEB`.`MORRO` (`FOLIO`, `CENDI_idCENDI`, `APE_PAT`, `APE_MAT`, `NOM_M`, `FECHAN`, `EDAD`, `CURP`, `FOTO_M`, `2PADRES`, `CITAS_idCITAS`, `ENTREVISTA_idENTREVISTA`, `GRUPO_idGRUPO`) VALUES ('2022013333', 1, 'DE', 'PRUEBA', 'MORRO', '01/01/2021', '1 ANO 4 MESES', 'DEPM210101HDFTGTA0', 'default.png', true, 1, 1, 2);
+INSERT INTO `DBTECWEB`.`MORRO` (`FOLIO`, `CENDI_idCENDI`, `APE_PAT`, `APE_MAT`, `NOM_M`, `FECHAN`, `EDAD`, `CURP`, `FOTO_M`, `2PADRES`, `CITAS_idCITAS`, `ENTREVISTA_idENTREVISTA`, `GRUPO_idGRUPO`,`FOTO_AUT`) VALUES ('2022010001', 1, 'DE', 'PRUEBA', 'MORRO', '01/01/2021', '1 ANO 4 MESES', 'DEPM210101HDFTGTA0', 'default.png', true, 1, 1, 1,'default.png');
+INSERT INTO `DBTECWEB`.`MORRO` (`FOLIO`, `CENDI_idCENDI`, `APE_PAT`, `APE_MAT`, `NOM_M`, `FECHAN`, `EDAD`, `CURP`, `FOTO_M`, `2PADRES`, `CITAS_idCITAS`, `ENTREVISTA_idENTREVISTA`, `GRUPO_idGRUPO`,`FOTO_AUT`) VALUES ('2022013333', 1, 'DE', 'PRUEBA', 'MORRO', '01/01/2021', '1 ANO 4 MESES', 'DEPM210101HDFTGTA0', 'default.png', true, 1, 1, 2,'default.png');
 
 COMMIT;
 
@@ -415,8 +415,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `DBTECWEB`;
-INSERT INTO `DBTECWEB`.`DERECHOHABIENTE` (`MORRO_Boleta_D`, `APE_PAT_D`, `APE_MAT_D`,`FOTO_D`, `NOM_D`, `NUM_EXT_D`, `NUM_INT_D`, `CALLE_D`, `TELF_D`, `TELC_D`, `MAIL_D`, `OCUPACION_ID`, `CURP_D`, `PLAZA_D`, `SUELDO_D`, `NUMEROE_D`, `ADSCRIPCION_idADS`, `NOMJEFE_D`, `CARGOJEFE_D`, `HORARIO_idHORARIO`, `EXT_D`, `COLONIA_D`, `MUNICIPIO_D`, `ESTADO_D`, `CP_D`) VALUES ('2022010001', 'PRUEBA', 'DOÑA',0,'default.png','10','', 'xd', 5524187502, 5536987410, 'doñaprueba@gmail.com', 1, 'Estonoimportaesunaprueba', 'Directora', '1000000', 1502478, 1, 'Pancho Lopez', 'Director General', 1, '55555', 'algo', 'algo', 'algo', 'algo');
-INSERT INTO `DBTECWEB`.`DERECHOHABIENTE` (`MORRO_Boleta_D`, `APE_PAT_D`, `APE_MAT_D`,`FOTO_D`, `NOM_D`, `NUM_EXT_D`, `NUM_INT_D`, `CALLE_D`, `TELF_D`, `TELC_D`, `MAIL_D`, `OCUPACION_ID`, `CURP_D`, `PLAZA_D`, `SUELDO_D`, `NUMEROE_D`, `ADSCRIPCION_idADS`, `NOMJEFE_D`, `CARGOJEFE_D`, `HORARIO_idHORARIO`, `EXT_D`, `COLONIA_D`, `MUNICIPIO_D`, `ESTADO_D`, `CP_D`) VALUES ('2022013333', 'PRUEBA', 'DOÑA',1,'default.png','10','', 'xd', 5524187502, 5536987410, 'doñaprueba@gmail.com', 1, 'Estonoimportaesunaprueba', 'Directora', '1000000', 1502478, 1, 'Pancho Lopez', 'Director General', 1, '55555', 'algo', 'algo', 'algo', 'algo');
+INSERT INTO `DBTECWEB`.`DERECHOHABIENTE` (`MORRO_Boleta_D`, `APE_PAT_D`, `APE_MAT_D`,`FOTO_D`, `NOM_D`, `NUM_EXT_D`, `NUM_INT_D`, `CALLE_D`, `TELF_D`, `TELC_D`, `MAIL_D`, `OCUPACION_ID`, `CURP_D`, `PLAZA_D`, `SUELDO_D`, `NUMEROE_D`, `ADSCRIPCION_idADS`, `NOMJEFE_D`, `CARGOJEFE_D`, `HORARIO_idHORARIO`, `EXT_D`, `COLONIA_D`, `MUNICIPIO_D`, `ESTADO_D`, `CP_D`) VALUES ('2022010001', 'PRUEBA', 'DOÑA','default.png','TEST1','10','', 'xd', 5524187502, 5536987410, 'doñaprueba@gmail.com', 1, 'Estonoimportaesunaprueba', 'Directora', '1000000', 1502478, 1, 'Pancho Lopez', 'Director General', 1, '55555', 'algo', 'algo', 'algo', 'algo');
+INSERT INTO `DBTECWEB`.`DERECHOHABIENTE` (`MORRO_Boleta_D`, `APE_PAT_D`, `APE_MAT_D`,`FOTO_D`, `NOM_D`, `NUM_EXT_D`, `NUM_INT_D`, `CALLE_D`, `TELF_D`, `TELC_D`, `MAIL_D`, `OCUPACION_ID`, `CURP_D`, `PLAZA_D`, `SUELDO_D`, `NUMEROE_D`, `ADSCRIPCION_idADS`, `NOMJEFE_D`, `CARGOJEFE_D`, `HORARIO_idHORARIO`, `EXT_D`, `COLONIA_D`, `MUNICIPIO_D`, `ESTADO_D`, `CP_D`) VALUES ('2022013333', 'PRUEBA', 'DOÑA','default.png','TEST2','10','', 'xd', 5524187502, 5536987410, 'doñaprueba@gmail.com', 1, 'Estonoimportaesunaprueba', 'Directora', '1000000', 1502478, 1, 'Pancho Lopez', 'Director General', 1, '55555', 'algo', 'algo', 'algo', 'algo');
 
 COMMIT;
 
