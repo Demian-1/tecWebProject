@@ -66,6 +66,14 @@ function checkVal(){
 				errors++;
 			}
 		}
+		else if(campos[i].id == "grupo"){
+			const valTxtGroup = document.getElementById("group-val");
+			if(!checkAvailability()){
+				campos[i].classList.add("is-invalid");
+				valTxtGroup.innerHTML = "No hay suficientes lugares en este grupo"
+				errors++;
+			}
+		}
 		else if(campos[i].id == "kid_age"){
 			const ageMonths = document.getElementById("kid_age_months");
 			if((ageMonths.value < 6 && campos[i].value==0) || (campos[i].value > 6 || campos[i].value < 0)){
@@ -241,7 +249,7 @@ const chosenGroup = document.getElementById("grupo");
 chosenGroup.onchange = checkAvailability;
 
 function checkAvailability(){
-	console.log(chosenGroup.value);
+	flag = true;
 	$.ajax({
 		url:"php/infoValidate.php", // RECUPERA EL PHP DESDE DONDE ESTÉ EL HTML.
 		method: "POST",
@@ -249,7 +257,9 @@ function checkAvailability(){
 		async: false,
 
 		success:function(respAX){
-			
+			console.log(respAX);
+			if(respAX == 0 ) flag = false;
 		}
 	});
+	return flag;
 }

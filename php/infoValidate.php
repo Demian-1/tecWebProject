@@ -1,16 +1,9 @@
 <?php
-    $server ='localhost';
-    $user='root';
-    $pass='';
-    $bd='dbtecweb';
-    $conexion = new mysqli($server,$user,$pass,$bd);
-    if(!$conexion){
-        die(mysqli_error($conexion));
-    }
+    include '../conexion.php';
 
-    $folio=$_POST["folio"];
     $valid=$_POST["valid"];
     if($valid == '1'){
+        $folio=$_POST["folio"];
         $sql="SELECT folio FROM MORRO where folio=$folio";
         $result=mysqli_query($conexion, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -19,6 +12,14 @@
             echo '0';
         }
     }else if($valid == '2'){
-        
+        $group=$_POST["group"];
+        $sql="SELECT LUGARES FROM grupo where idGRUPO=$group";
+        $result=mysqli_query($conexion,$sql);
+        $row = mysqli_fetch_row($result);
+        if($row[0]>0){
+            echo '1'; // Hay suficientes lugares
+        }else{
+            echo '0';
+        }
     }
 ?>
