@@ -43,7 +43,6 @@ function checkVal(){
 		campos[i].classList.contains("is-invalid") && campos[i].classList.remove("is-invalid");
 		if(campos[i].id.endsWith("pat") || campos[i].id.endsWith("mat") || campos[i].id.endsWith("nombres") || campos[i].id.endsWith("calle") || campos[i].id.endsWith("plaza")){
 			if(!regExTxt.test(campos[i].value)){
-				console.log(campos[i].value);
 				campos[i].classList.add("is-invalid");
 				errors++;
 			}
@@ -71,6 +70,12 @@ function checkVal(){
 			if(!checkAvailability()){
 				campos[i].classList.add("is-invalid");
 				valTxtGroup.innerHTML = "No hay suficientes lugares en este grupo"
+				errors++;
+			}
+		}
+		else if(campos[i].type == "number"){
+			if(campos[i].value < 0){
+				campos[i].classList.add("is-invalid");
 				errors++;
 			}
 		}
