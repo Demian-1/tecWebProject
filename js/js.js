@@ -251,7 +251,7 @@ chosenGroup.onchange = checkAvailability;
 function checkAvailability(){
 	flag = true;
 	$.ajax({
-		url:"php/infoValidate.php", // RECUPERA EL PHP DESDE DONDE ESTÉ EL HTML.
+		url:"php/infoValidate.php",
 		method: "POST",
 		data: {group:chosenGroup.value,valid:'2'}, 
 		async: false,
@@ -262,4 +262,29 @@ function checkAvailability(){
 		}
 	});
 	return flag;
+}
+
+const subButton = document.getElementById("subButton");
+
+subButton.onclick = submitImages;
+function submitImages(){
+	var fd = new FormData();
+	var image = document.querySelectorAll(".inpFile");
+	var count = 1;
+	image.forEach(image=>{
+		fd.append('file_'+count,image[0].files[0]);
+		count++;
+	});
+	$.ajax({
+		url:"php/infoValidate.php",
+		method: "POST",
+		data: {fd,valid:3},
+		contentType:false,
+		processData:false,
+
+		success:function(resAX){
+			console.log("Se subieron las imagenes");
+		}
+
+	});
 }

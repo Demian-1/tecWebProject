@@ -21,5 +21,21 @@
         }else{
             echo '0';
         }
+    }else if($valid == '3'){
+        $filename = $_FILES['file']['name'];
+        $location = "../img/customerImages".$filename;
+        $uploadOk = 1;
+        $imageFileType = pathinfo($location,PATHINGO_EXTENSION);
+        $valid_extensions = array('jpg','jpeg','png');
+        if(!in_array(strtolower($imageFileType),$valid_extensions)){
+            $uploadOk = 0;
+        }
+        if($uploadOk == 0){
+            echo 0;
+        }else{
+            if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
+                
+            }
+        }
     }
 ?>
