@@ -268,23 +268,43 @@ const subButton = document.getElementById("subButton");
 
 subButton.onclick = submitImages;
 function submitImages(){
-	var fd = new FormData();
-	var image = document.querySelectorAll(".inpFile");
-	var count = 1;
-	image.forEach(image=>{
-		fd.append('file_'+count,image[0].files[0]);
-		count++;
-	});
-	$.ajax({
-		url:"php/infoValidate.php",
-		method: "POST",
-		data: {fd,valid:3},
-		contentType:false,
-		processData:false,
+	const folio = document.getElementById("folio");
+	var fd1 = new FormData();
+	var fd2 = new FormData();
+	var fd3 = new FormData();
+	var fd4 = new FormData();
 
-		success:function(resAX){
-			console.log("Se subieron las imagenes");
-		}
+	var files1 = $('#kid_img')[0].files[0];
+	var files2 = $('#der_img')[0].files[0];
+	var files3 = $('#resp_img')[0].files[0];
+	var files4 = $('#cony_img')[0].files[0];
 
-	});
+	fd1.append('file',files1);
+	fd2.append('file',files2);
+	fd3.append('file',files3);
+	fd4.append('file',files4);
+
+	var fd;
+	for(i = 0; i < 4; i++){
+		if(i==0){ fd = fd1; }
+		else if(i==1) {fd = fd2; }
+		else if(i==2) {fd = fd3; }
+		else {fd = fd4; }
+		var nombre = folio.value+"_"+i;
+		fd.append('nom',nombre);
+		$.ajax({
+			url:"php/sendImages.php",
+			type: "POST",
+			data: fd,
+			contentType:false,
+			processData:false,
+
+			success:function(resAX){
+				if(resAX == 0){
+					alert("Hubo un error con las fotografias");
+				}
+			}
+
+		});
+	}
 }
