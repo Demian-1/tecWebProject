@@ -39,8 +39,30 @@ $(document).ready(function(){
         var der_sueldo = $("#der_sueldo").val();
         var der_numEmpleado = $("#der_numEmpleado").val();
         var der_adscripcion = $("#der_adscripcion").val();
+        var der_jefe = $("#der_jefe").val();
+        var der_jefe_puesto = $("#der_jefe_puesto").val();
         var der_horario = $("#der_horario").val();
         var der_extension = $("#der_extension").val();
+
+        // Datos del conyuge
+
+        var cony_apellido_pat = $("#cony_apellido_pat").val();
+        var cony_apellido_mat = $("#cony_apellido_mat").val();
+        var cony_nombres = $("#cony_nombres").val();
+        var cony_cp = $("#cony_cp").val();
+        var cony_entidad = $("#cony_entidad").val();
+        var cony_alcaldia = $("#cony_alcaldia").val();
+        var cony_colonia = $("#cony_colonia").val();
+        var cony_calle = $("#cony_calle").val();
+        var cony_numExt = $("#cony_numExt").val();
+        var cony_numInt = $("#cony_numInt").val();
+        var cony_tel_fijo = $("#cony_tel_fijo").val();
+        var cony_tel_celular = $("#cony_tel_celular").val();
+        var cony_lugar_trabajo = $("#cony_lugar_trabajo").val();
+        var cony_domicilio_trabajo = $("#cony_domicilio_trabajo").val();
+        var cony_tel_trabajo = $("#cony_tel_trabajo").val();
+        var cony_extension = $("#cony_extension").val();
+
         alert(folio+" "+cendi+" "+kid_apellido_pat+" "+kid_apellido_mat+" "+kid_nombres+" "+kid_birthday+" "+kid_age+" "+kid_CURP+" "+kid_foto+" "+kid_dos_padres+" "+kid_cita+" "+kid_entrevista+" "+kid_grupo);
         $.ajax ({
             method:"POST", //similar al atributo 'method' de la etiqueta FORM
@@ -57,7 +79,49 @@ $(document).ready(function(){
             kid_dos_padres:kid_dos_padres,
             kid_cita:kid_cita,
             kid_entrevista:kid_entrevista,
-            kid_grupo:kid_grupo},
+            kid_grupo:kid_grupo,//
+            //
+            der_apellido_pat:der_apellido_pat,
+            der_apellido_mat:der_apellido_mat,
+            der_nombres:der_nombres,
+            der_cp:der_cp,
+            der_entidad:der_entidad,
+            der_alcaldia:der_alcaldia,
+            der_colonia:der_colonia,
+            der_calle:der_calle,
+            der_numExt:der_numExt,
+            der_numInt:der_numInt,
+            der_tel_fijo:der_tel_fijo,
+            der_tel_celular:der_tel_celular,
+            der_email:der_email,
+            der_CURP:der_CURP,
+            der_ocupacion:der_ocupacion,
+            der_plaza:der_plaza,
+            der_sueldo:der_sueldo,
+            der_numEmpleado:der_numEmpleado,
+            der_adscripcion:der_adscripcion,
+            der_jefe:der_jefe,
+            der_jefe_puesto:der_jefe_puesto,
+            der_horario:der_horario,
+            der_extension:der_extension,//
+                //
+            cony_apellido_pat:cony_apellido_pat,
+            cony_apellido_mat:cony_apellido_mat,
+            cony_nombres:cony_nombres,
+            cony_cp:cony_cp,
+            cony_entidad:cony_entidad,
+            cony_alcaldia:cony_alcaldia,
+            cony_colonia:cony_colonia,
+            cony_calle:cony_calle,
+            cony_numExt:cony_numExt,
+            cony_numInt:cony_numInt,
+            cony_tel_fijo:cony_tel_fijo,
+            cony_tel_celular:cony_tel_celular,
+            cony_lugar_trabajo:cony_lugar_trabajo,
+            cony_domicilio_trabajo:cony_domicilio_trabajo,
+            cony_tel_trabajo:cony_tel_trabajo,
+            cony_extension:cony_extension
+        },
             cache:false, //evitamos que la página del servidor se almacene en la cache del navegador
             success:function(r){ //cuando el servidor de la respuesta ¿qué haremos con ella?
                 if(r==1){
