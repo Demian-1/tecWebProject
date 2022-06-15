@@ -1,10 +1,13 @@
 <?php
 
     include '../conexion.php';
+    $folio=$_POST['folio'];
+
+    session_start();
+    $_SESSION['folio']=$folio;
 
     // Niño datos:
 
-    $folio=$_POST['folio'];
     $cendi=$_POST['cendi'];
     $kid_img=$_POST['kid_img'];
     $kid_apellido_pat=$_POST['kid_apellido_pat'];
