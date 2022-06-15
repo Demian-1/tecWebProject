@@ -39,6 +39,8 @@ $(document).ready(function(){
         var der_sueldo = $("#der_sueldo").val();
         var der_numEmpleado = $("#der_numEmpleado").val();
         var der_adscripcion = $("#der_adscripcion").val();
+        var der_jefe = $("#der_jefe").val();
+        var der_jefe_puesto = $("#der_jefe_puesto").val();
         var der_horario = $("#der_horario").val();
         var der_extension = $("#der_extension").val();
         alert(folio+" "+cendi+" "+kid_apellido_pat+" "+kid_apellido_mat+" "+kid_nombres+" "+kid_birthday+" "+kid_age+" "+kid_CURP+" "+kid_foto+" "+kid_dos_padres+" "+kid_cita+" "+kid_entrevista+" "+kid_grupo);
@@ -78,6 +80,8 @@ $(document).ready(function(){
             der_sueldo:der_sueldo,
             der_numEmpleado:der_numEmpleado,
             der_adscripcion:der_adscripcion,
+            der_jefe:der_jefe,
+            der_jefe_puesto:der_jefe_puesto,
             der_horario:der_horario,
             der_extension:der_extension
         },
