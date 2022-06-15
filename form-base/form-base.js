@@ -57,7 +57,30 @@ $(document).ready(function(){
             kid_dos_padres:kid_dos_padres,
             kid_cita:kid_cita,
             kid_entrevista:kid_entrevista,
-            kid_grupo:kid_grupo},
+            kid_grupo:kid_grupo,//
+            //
+            der_apellido_pat:der_apellido_pat,
+            der_apellido_mat:der_apellido_mat,
+            der_nombres:der_nombres,
+            der_cp:der_cp,
+            der_entidad:der_entidad,
+            der_alcaldia:der_alcaldia,
+            der_colonia:der_colonia,
+            der_calle:der_calle,
+            der_numExt:der_numExt,
+            der_numInt:der_numInt,
+            der_tel_fijo:der_tel_fijo,
+            der_tel_celular:der_tel_celular,
+            der_email:der_email,
+            der_CURP:der_CURP,
+            der_ocupacion:der_ocupacion,
+            der_plaza:der_plaza,
+            der_sueldo:der_sueldo,
+            der_numEmpleado:der_numEmpleado,
+            der_adscripcion:der_adscripcion,
+            der_horario:der_horario,
+            der_extension:der_extension
+        },
             cache:false, //evitamos que la página del servidor se almacene en la cache del navegador
             success:function(r){ //cuando el servidor de la respuesta ¿qué haremos con ella?
                 if(r==1){
