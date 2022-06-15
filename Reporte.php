@@ -122,7 +122,7 @@
     $pdf->Cell(198,12,utf8_decode('FICHA DE INSCRIPCIÓN'),0,1,'C');
     $pdf->SetFont('Arial','B',12);
     $pdf->Cell(165,30,utf8_decode('CICLO ESCOLAR: 2022-2023'),0,0,'C');
-    $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_M"],175,37,30,0,''),1,1,'C');
+    $pdf->Cell(30,30,$pdf->Image('./img/customerImages/'.$datos["FOTO_M"],175,37,30,0,''),1,1,'C');
     $pdf->SetFont('Arial','B',10);
     $pdf->Cell(150,12,utf8_decode('CENDI:')." ".$datos["NOMBRE_CE"],0,0,'C');  
     $pdf->Cell(15,10,'Folio:',1,0,'C');
@@ -328,18 +328,18 @@
     $pdf->Cell(66,5,utf8_decode('Religión'),1,1,'C',0);
     }
     
-    if($datos["AUT_D"]==1 && $datos["2PADRES"]==1){
+    if( file_exists('img/customerImages/'.$datos["FOTO_AUT"]) && $datos["2PADRES"]==1){
         $pdf->AddPage('P','letter',0);
         $pdf->SetFont('Arial','B',8);
         $pdf->Ln(30);
         $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE,CÓNYUGE(PADRE,MADRE) Y PERSONA AUTORIZADA PARA RECOGER AL NIÑO O A LA NIÑA'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(25,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
         $pdf->Cell(30,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_C"],95,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_C"],95,62,30,0,''),1,0,'C');
         $pdf->Cell(30,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],155,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_AUT"],155,62,30,0,''),1,1,'C');
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',12); 
         $pdf->Cell(25,5,'',0,0,'C');
@@ -352,16 +352,16 @@
         $pdf->Cell(30,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
         
-    }else if($datos["AUT_D"]==1 && $datos["2PADRES"]==0){
+    }else if(file_exists('img/customerImages/'.$datos["FOTO_AUT"]) && $datos["2PADRES"]==0){
         $pdf->AddPage('P','letter',0);
         $pdf->SetFont('Arial','B',8);
         $pdf->Ln(30);
         $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE Y PERSONA AUTORIZADA'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(25,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
         $pdf->Cell(88,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],153,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_AUT"],153,62,30,0,''),1,1,'C');
         
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',12); 
@@ -375,7 +375,7 @@
         $pdf->Cell(30,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
        
-    }else if($datos["AUT_D"]==0 && $datos["2PADRES"]==1){
+    }else if(!file_exists('img/customerImages/'.$datos["FOTO_AUT"]) && $datos["2PADRES"]==1){
 
         $pdf->AddPage('P','letter',0);
         $pdf->SetFont('Arial','B',8);
@@ -383,9 +383,9 @@
         $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍAS DEL O LA DERECHOHABIENTE Y CÓNYUGE(PADRE,MADRE)'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(25,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_D"],35,62,30,0,''),1,0,'C');
         $pdf->Cell(88,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTOA_D"],153,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_C"],153,62,30,0,''),1,1,'C');
         
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',12); 
@@ -398,14 +398,14 @@
         $pdf->Cell(25,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
         $pdf->Cell(30,5,'',0,0,'C');
-    }else if($datos["AUT_D"]==0 && $datos["2PADRES"]==0){
+    }else if($datos["2PADRES"]==0){
         $pdf->AddPage('P','letter',0);
         $pdf->SetFont('Arial','B',8);
         $pdf->Ln(30);
         $pdf->Cell(198,12,utf8_decode('FOTOGRAFÍA DEL O LA DERECHOHABIENTE'),0,1,'C');
         $pdf->Ln(10);
         $pdf->Cell(84,30,'',0,0,'C');
-        $pdf->Cell(30,30,$pdf->Image('img/'.$datos["FOTO_D"],94,62,30,0,''),1,1,'C');
+        $pdf->Cell(30,30,$pdf->Image('img/customerImages/'.$datos["FOTO_D"],94,62,30,0,''),1,1,'C');
         
         
         $pdf->Ln(5);
