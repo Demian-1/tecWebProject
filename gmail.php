@@ -5,7 +5,7 @@ include("./phpMailer/class.smtp.php");
 $email_user = "tecwebproyectcendi@gmail.com"; //OJO. Debes actualizar esta línea con tu información
 $email_password = "esdrasEsGay69"; //OJO. Debes actualizar esta línea con tu información
 $the_subject = "Prueba de PHPMailer por PEM (May 2022)";
-$address_to = "esdras.josue@hotmail.com"; //OJO. Debes actualizar esta línea con tu información
+$address_to = "luise.ascencio13@gmail.com"; //OJO. Debes actualizar esta línea con tu información
 $from_name = "Tec Web - 2CM4";
 $phpmailer = new PHPMailer();
 
@@ -29,5 +29,9 @@ $phpmailer->Body .= "<p>Esta es una prueba del envío de correo :)</p>";
 $phpmailer->Body .= "<p>Fecha: ".date("d-m-Y")."</p>";
 $phpmailer->IsHTML(true);
 
-$phpmailer->Send();
+if(!$phpmailer->Send()){
+	echo "No se pudo";
+} else{
+	echo "Se mandó";
+}
 ?>

@@ -49,8 +49,14 @@ function checkVal(){
 			}
 		}
 		else if(campos[i].id == "folio"){
+			const invFol = document.getElementById("inv-fol");
 			if(campos[i].value.length < 10 || !regExFol.test(campos[i].value)){
 				campos[i].classList.add("is-invalid");
+				invFol.innerHTML = "Debe de tener 10 dígitos. Puede comenzar por 'PE' o 'PP'";
+				errors++;
+			}else if(checkFolio(campos[i].value)){
+				campos[i].classList.add("is-invalid");
+				invFol.innerHTML = "El folio introducido ya ha sido registrado";
 				errors++;
 			}
 		}
@@ -209,4 +215,41 @@ function showResponsible() {
 	}else{
 		respAct.classList.add("d-none");
 	}
+}
+
+// Code related to folio and availability validation
+
+function checkFolio(folio) {
+	var flag = false;
+	$.ajax({
+		url:"php/infoValidate.php", // RECUPERA EL PHP DESDE DONDE ESTÉ EL HTML.
+		method: "POST",
+		data: {folio:folio,valid:'1'},
+		async: false, 
+
+		success:function(respAX){
+			if(respAX=='0'){  // No existe el folio
+			}else{ // Existe el folio
+				flag = true;
+			}
+		}
+	});
+	return flag;
+}
+
+const chosenGroup = document.getElementById("grupo");
+chosenGroup.onchange = checkAvailability;
+
+function checkAvailability(){
+	console.log(chosenGroup.value);
+	$.ajax({
+		url:"php/infoValidate.php", // RECUPERA EL PHP DESDE DONDE ESTÉ EL HTML.
+		method: "POST",
+		data: {group:chosenGroup.value,valid:'2'}, 
+		async: false,
+
+		success:function(respAX){
+			
+		}
+	});
 }

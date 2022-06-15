@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/formulario.css">
     <link rel="icon" href="./assets/images/logo-cendi.jpg">
+    <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/js.js" defer></script>
 </head>
 <body>
@@ -71,7 +72,7 @@
                         <div class="form-floating">
                             <input type="text" name="folio" id="folio" class="form-control needs-validation" maxlength="10" placeholder="Folio" required>
                             <label for="folio">Folio</label>
-                            <div class="invalid-feedback">Debe de tener 10 dígitos. Puede comenzar por "PE" o "PP"</div>
+                            <div class="invalid-feedback" id="inv-fol"></div>
                         </div>
                     </div>
                     <div class="col-sm-6">

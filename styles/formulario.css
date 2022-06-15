@@ -234,3 +234,12 @@ label{
 .imgTxt{
     margin: 0.75rem 0;
 }
+
+/* Invalid folio */
+
+#is-in-bd{
+    color: #dc3545;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+}
