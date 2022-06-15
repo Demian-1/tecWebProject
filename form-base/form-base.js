@@ -3,6 +3,33 @@ alert("hola");
 $(document).ready(function(){
     $("#formulario-prin").submit(function(e){
         e.preventDefault();
+
+        var currDate = new Date().getDate();
+        var interviewDate;
+        var kid_dia_entrevista;
+
+        var documentsDate = currDate + 1;
+        if(document.getElementById("grupo").value == 1){
+            interviewDate = currDate + 1;
+        }else{
+            kid_dia_entrevista = null;
+        }
+
+        $.ajax({
+            url:"php/infoValidate.php",
+            method: "POST",
+            data: {documentsDate:documentsDate,interviewDate:interviewDate,valid:4}, 
+            async: false,
+
+            success:function(respAX){
+                if(respAX == 0 ) flag = false;
+            }
+        });
+
+        if(document.getElementById("grupo").value == 1) kid_dia_entrevista = interviewDate;
+        var kid_dia_documentos = documentsDate;
+        
+
         var folio = $("#folio").val();
         var cendi = $("#CENDI").val();
         var kid_img = folio+"_0.png";
