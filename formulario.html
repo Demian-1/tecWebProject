@@ -35,7 +35,7 @@
             </div>
         </nav>
     </header>
-    <form action="respuesta.html" class="form shadow-lg" novalidate method="post" enctype="multipart/form-data">
+    <form action="respuesta.html" class="form shadow-lg" novalidate method="post" enctype="multipart/form-data" id="formulario-prin">
         <h1 class="text-center">Registro 2022-2023</h1>
             <!-- Barra de progreso -->
             <div class="progressbar">
@@ -534,6 +534,16 @@
                     <input type="text" name="cony_nombres" id="cony_nombres" placeholder="Nombre(s)" class="form-control needs-validation" required>
                     <label for="cony_nombres">Nombre(s)</label>
                     <div class="invalid-feedback">Introduzca un nombre válido</div>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="cony_curp" id="cony_curp" placeholder="CURP" class="form-control needs-validation" required>
+                    <label for="cony_curp">CURP</label>
+                    <div class="invalid-feedback">Introduzca un curp valido</div>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="cony_religion" id="cony_religion" placeholder="religion" class="form-control needs-validation" required>
+                    <label for="cony_religion">Religion</label>
+                    <div class="invalid-feedback">Introduzca una Religion valida</div>
                 </div>
                 <div class="row border-top">
                     <div class="col-sm-4">
